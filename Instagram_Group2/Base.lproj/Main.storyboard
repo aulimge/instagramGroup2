@@ -125,7 +125,7 @@
         <!--View Controller-->
         <scene sceneID="OKo-eN-Vrd">
             <objects>
-                <viewController id="xDE-d0-Xnk" customClass="ViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="xDE-d0-Xnk" customClass="ViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U61-Zg-qrj"/>
                         <viewControllerLayoutGuide type="bottom" id="wRL-P0-WPc"/>
@@ -133,6 +133,16 @@
                     <view key="view" contentMode="scaleToFill" id="Z2A-0g-472">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1AI-ka-ezQ">
+                                <rect key="frame" x="299" y="600" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutButton:" destination="xDE-d0-Xnk" eventType="touchUpInside" id="gzp-VU-lSd"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="8xf-GZ-Kdd"/>
