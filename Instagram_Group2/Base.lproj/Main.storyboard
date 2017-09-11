@@ -65,7 +65,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="mji-im-HsB">
             <objects>
-                <viewController id="hHv-ee-GU3" customClass="SignUpViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="hHv-ee-GU3" customClass="SignUpViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZMm-61-aeP"/>
                         <viewControllerLayoutGuide type="bottom" id="Ak9-t3-LTV"/>
@@ -100,6 +100,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create Account"/>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VGV-KB-dJv">
+                                <rect key="frame" x="79" y="163" width="217" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -108,6 +115,7 @@
                         <outlet property="createBtnTapped" destination="YYe-8s-6B4" id="8X5-oR-qOB"/>
                         <outlet property="emailTextField" destination="cUT-Ds-pjf" id="6aV-II-9Yy"/>
                         <outlet property="passwordTextField" destination="KNa-JE-FvI" id="Cl1-Ji-Sw8"/>
+                        <outlet property="usernameTextField" destination="VGV-KB-dJv" id="kaw-4v-xu0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tQ-Td-a2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
