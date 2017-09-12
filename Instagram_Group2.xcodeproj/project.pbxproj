@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1712F7C71F67896400FE0C01 /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712F7C61F67896400FE0C01 /* editProfileViewController.swift */; };
 		37C95A52CB71A307B77A8FFE /* Pods_Instagram_Group2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16610B9051CDB223C6A3958 /* Pods_Instagram_Group2.framework */; };
 		C017A8E51F668AAB00EBF81F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017A8E41F668AAB00EBF81F /* LoginViewController.swift */; };
 		C017A8E71F668AD100EBF81F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017A8E61F668AD100EBF81F /* SignUpViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1712F7C61F67896400FE0C01 /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 		244AF88130E974DD6F6F9D78 /* Pods-Instagram_Group2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram_Group2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram_Group2/Pods-Instagram_Group2.debug.xcconfig"; sourceTree = "<group>"; };
 		5F17D59AA9076B456348C1A2 /* Pods-Instagram_Group2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram_Group2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram_Group2/Pods-Instagram_Group2.release.xcconfig"; sourceTree = "<group>"; };
 		C017A8E41F668AAB00EBF81F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				F81D11DC1F6781BA007FEDBD /* Instagram_Group2.entitlements */,
+				1712F7C61F67896400FE0C01 /* editProfileViewController.swift */,
 				F81D11C81F667E52007FEDBD /* AppDelegate.swift */,
 				F81D11CA1F667E52007FEDBD /* ViewController.swift */,
 				F81D11CC1F667E52007FEDBD /* Main.storyboard */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C017A8E51F668AAB00EBF81F /* LoginViewController.swift in Sources */,
+				1712F7C71F67896400FE0C01 /* editProfileViewController.swift in Sources */,
 				F81D11CB1F667E52007FEDBD /* ViewController.swift in Sources */,
 				C017A8E71F668AD100EBF81F /* SignUpViewController.swift in Sources */,
 				F81D11C91F667E52007FEDBD /* AppDelegate.swift in Sources */,
