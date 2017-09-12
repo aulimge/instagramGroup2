@@ -473,13 +473,46 @@
                     <view key="view" contentMode="scaleToFill" id="h82-xo-keI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UT3-pD-5vg">
+                                <rect key="frame" x="135" y="340" width="167" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="buttonUpload:" destination="Vvk-Mf-RRg" eventType="touchUpInside" id="uRD-NS-VsB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzW-jv-J4v">
+                                <rect key="frame" x="73" y="340" width="33" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Camera" image="icons8-camera_filled"/>
+                                <connections>
+                                    <action selector="buttonCamera:" destination="Vvk-Mf-RRg" eventType="touchUpInside" id="kKN-ci-yDp"/>
+                                    <action selector="buttonUpload:" destination="Vvk-Mf-RRg" eventType="touchUpInside" id="eru-XE-6lW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYG-Gd-st0">
+                                <rect key="frame" x="67" y="91" width="240" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q3p-93-1u3">
+                                <rect key="frame" x="67" y="128" width="240" height="197"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icons8-plus_2_math_filled" id="crw-NN-ead"/>
+                    <connections>
+                        <outlet property="imageView" destination="Q3p-93-1u3" id="cSA-cU-rbt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czF-uU-gPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3841" y="1776"/>
+            <point key="canvasLocation" x="3840.8000000000002" y="1775.2623688155923"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="2FH-0q-yOC">
@@ -559,6 +592,7 @@
     <resources>
         <image name="Instagram icon" width="1000" height="648"/>
         <image name="Instagram word Icon" width="383" height="131"/>
+        <image name="icons8-camera_filled" width="32" height="32"/>
         <image name="icons8-home" width="32" height="32"/>
         <image name="icons8-like" width="32" height="32"/>
         <image name="icons8-plus_2_math_filled" width="32" height="32"/>

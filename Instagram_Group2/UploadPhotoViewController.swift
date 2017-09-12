@@ -10,11 +10,25 @@ import UIKit
 
 class UploadPhotoViewController: UIViewController {
 
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func buttonUpload(_ sender: Any) {
+        
+    }
 
+    
+    @IBAction func buttonCamera(_ sender: Any) {
+        
+    }
+    
     
 }
