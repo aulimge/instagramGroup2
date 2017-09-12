@@ -190,16 +190,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cMu-oh-gno" kind="relationship" relationship="viewControllers" id="pyZ-TC-8ZW"/>
                         <segue destination="Tkk-47-6JW" kind="relationship" relationship="viewControllers" id="Zy0-N2-Yhc"/>
                         <segue destination="r9d-mf-MWm" kind="relationship" relationship="viewControllers" id="LiZ-at-vHQ"/>
+                        <segue destination="cMu-oh-gno" kind="relationship" relationship="viewControllers" id="pyZ-TC-8ZW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxU-bm-4AY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2646" y="912"/>
         </scene>
-        <!--Profile-->
+        <!--Profile View Controller-->
         <scene sceneID="y9B-Em-aQY">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="cMu-oh-gno" customClass="ProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
@@ -219,7 +219,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="fg0-Qr-7oL"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-user_filled" selectedImage="icons8-user_filled" id="fg0-Qr-7oL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cd-Na-UDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -243,7 +243,7 @@
             </objects>
             <point key="canvasLocation" x="5574" y="912"/>
         </scene>
-        <!--Item-->
+        <!--Search View Controller-->
         <scene sceneID="M8R-9I-MsU">
             <objects>
                 <viewController storyboardIdentifier="searchViewController" id="r9d-mf-MWm" customClass="searchViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
@@ -256,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="DT3-Yy-ICe"/>
+                    <tabBarItem key="tabBarItem" image="icons8-search" selectedImage="icons8-search" id="DT3-Yy-ICe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcm-C7-AMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,7 +284,7 @@
         <scene sceneID="8Kb-hf-pzi">
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Tkk-47-6JW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="mdu-dw-1NV"/>
+                    <tabBarItem key="tabBarItem" image="icons8-home" selectedImage="icons8-home" id="mdu-dw-1NV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sLd-2A-eOL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -300,4 +300,9 @@
             <point key="canvasLocation" x="3444" y="131.78410794602701"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-home" width="32" height="32"/>
+        <image name="icons8-search" width="32" height="32"/>
+        <image name="icons8-user_filled" width="32" height="32"/>
+    </resources>
 </document>
