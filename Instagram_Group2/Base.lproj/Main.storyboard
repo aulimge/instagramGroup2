@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s90-ZD-Aew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4394" y="132"/>
+            <point key="canvasLocation" x="4393" y="132"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Q7v-A7-9iJ">
@@ -168,15 +168,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Tkk-47-6JW" kind="relationship" relationship="viewControllers" id="Zy0-N2-Yhc"/>
                         <segue destination="cMu-oh-gno" kind="relationship" relationship="viewControllers" id="pyZ-TC-8ZW"/>
+                        <segue destination="Tkk-47-6JW" kind="relationship" relationship="viewControllers" id="Zy0-N2-Yhc"/>
+                        <segue destination="r9d-mf-MWm" kind="relationship" relationship="viewControllers" id="LiZ-at-vHQ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxU-bm-4AY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2646" y="912"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="y9B-Em-aQY">
             <objects>
                 <viewController storyboardIdentifier="editProfileViewController" id="cMu-oh-gno" customClass="editProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
@@ -189,11 +190,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="fg0-Qr-7oL"/>
+                    <tabBarItem key="tabBarItem" title="Profile" id="fg0-Qr-7oL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cd-Na-UDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4393" y="912"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="M8R-9I-MsU">
+            <objects>
+                <viewController storyboardIdentifier="searchViewController" id="r9d-mf-MWm" customClass="searchViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h8P-To-1SQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="imQ-Zb-eIC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Ax-eZ-XVJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="DT3-Yy-ICe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bcm-C7-AMk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2646" y="1819"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bjj-PZ-Usg">
@@ -213,11 +233,11 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="8Kb-hf-pzi">
             <objects>
                 <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Tkk-47-6JW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mdu-dw-1NV"/>
+                    <tabBarItem key="tabBarItem" systemItem="recents" id="mdu-dw-1NV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sLd-2A-eOL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
