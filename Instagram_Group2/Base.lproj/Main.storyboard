@@ -139,7 +139,29 @@
                     <view key="view" contentMode="scaleToFill" id="Z2A-0g-472">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fvQ-OM-msh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5T1-YL-Kg3">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5T1-YL-Kg3" id="cmy-5S-Zgj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fvQ-OM-msh" secondAttribute="trailing" id="L1D-1p-q57"/>
+                            <constraint firstItem="fvQ-OM-msh" firstAttribute="leading" secondItem="Z2A-0g-472" secondAttribute="leading" id="OUc-Db-BY6"/>
+                            <constraint firstItem="wRL-P0-WPc" firstAttribute="top" secondItem="fvQ-OM-msh" secondAttribute="bottom" id="hQb-uD-aJs"/>
+                            <constraint firstItem="fvQ-OM-msh" firstAttribute="top" secondItem="U61-Zg-qrj" secondAttribute="bottom" id="jJq-GH-UDX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8xf-GZ-Kdd">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="R5V-sQ-ItO">
@@ -156,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s90-ZD-Aew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4393" y="132"/>
+            <point key="canvasLocation" x="4392.8000000000002" y="131.78410794602701"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Q7v-A7-9iJ">
@@ -188,6 +210,13 @@
                     <view key="view" contentMode="scaleToFill" id="LuP-6O-Y6i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sg5-dc-VfF">
+                                <rect key="frame" x="321" y="28" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="fg0-Qr-7oL"/>
@@ -195,6 +224,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cd-Na-UDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4393" y="912"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="2FH-0q-yOC">
+            <objects>
+                <viewController storyboardIdentifier="editProfileViewController" id="m71-Zr-hVK" customClass="editProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gHs-xB-SVz"/>
+                        <viewControllerLayoutGuide type="bottom" id="cGw-Za-dRD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ygU-Tv-moN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="63x-z6-Etp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5574" y="912"/>
         </scene>
         <!--Item-->
         <scene sceneID="M8R-9I-MsU">
