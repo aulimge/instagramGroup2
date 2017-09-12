@@ -58,6 +58,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         print("Successfully logged in with Facebook...")
+        
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+            print(123)
+        }
+        
+        
+        
+        
     }
     
     
