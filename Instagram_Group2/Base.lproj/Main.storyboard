@@ -48,19 +48,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mom-bq-ath" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="71" y="382" width="234" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="wkl-TD-q5m"/>
                     <connections>
                         <outlet property="emailTextField" destination="UgN-3G-5Un" id="OJ3-eQ-hzx"/>
+                        <outlet property="fbLoginButton" destination="mom-bq-ath" id="HkN-JP-9J0"/>
                         <outlet property="loginBtnTapped" destination="qFB-oI-as1" id="scq-F8-Knh"/>
                         <outlet property="passwordTextField" destination="7bd-ym-s9k" id="Wvn-g5-bwj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="137"/>
+            <point key="canvasLocation" x="984.79999999999995" y="136.28185907046478"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="mji-im-HsB">

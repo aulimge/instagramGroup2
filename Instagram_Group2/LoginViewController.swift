@@ -8,8 +8,10 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,7 +25,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Login Email
         if Auth.auth().currentUser != nil {
             guard let vc = storyboard?.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController else { return }
             
@@ -31,11 +33,37 @@ class LoginViewController: UIViewController {
             present(vc, animated:  true, completion:  nil)
         }
         
+     
+        
 
 
        
     }
     
+    //******FB Login***************
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton! {
+        didSet{
+            fbLoginButton.delegate = self
+            fbLoginButton.readPermissions = ["email","public_profile"]
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+         print("Did Logout of Facebook")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        print("Successfully logged in with Facebook...")
+    }
+    
+    
+    
+    
+    //****Normal Email Login ********
     func loginUser() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -79,3 +107,54 @@ class LoginViewController: UIViewController {
     
 
 }
+
+
+
+//extension LoginViewController : FBSDKLoginButtonDelegate {
+//    
+//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+//        
+//        if error != nil {
+//            print(error)
+//            return
+//        }
+//        
+//        let accessToken = FBSDKAccessToken.current()
+//        if let accessTokenString = accessToken?.tokenString {
+//            
+//            //print("FBaccess token is \(accessTokenString)")
+//            let credential = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+//            
+//            Auth.auth().signIn(with: credential, completion: { (user, error) in
+//                if error != nil {
+//                    print("Something wrong with the error user", error)
+//                    return
+//                }
+//                
+//                var ref: DatabaseReference()
+//                let userAuth = Auth.auth().currentUser
+//                let currentUserID : String = ""
+//                
+//                ref = Database.database().reference()
+//                
+//                if let id = userAuth?.uid {
+//                    
+//                }
+//                
+//                
+//                
+//                
+//            })
+//            
+//        }
+//        
+//        
+//    }
+//    
+//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+//        print("User logged out")
+//    }
+//    
+//}
+
+
