@@ -70,22 +70,29 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func showEmailAddress() {
         let accessToken = FBSDKAccessToken.current()
-
-        let credential = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
-            
-            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        guard let accessTokenString = accessToken?.tokenString else {return}
         
+        
+        let credentials = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
+            
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            if error != nil {
+                print("Someting went wrong with our FB User :", error ?? "")
+                return
+            }
+            print("Successfully logged in with our user: ", user ?? "")
+        }
         
         
          //GEt Email Address
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
             
             if error != nil {
-                print("Failed to start graph request:", error)
+                print("Failed to start graph request:", error ?? "")
                 return
             }
             
-            print(result)
+            print(result ?? "")
             
         }
     }
