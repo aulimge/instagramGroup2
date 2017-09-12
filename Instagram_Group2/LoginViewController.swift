@@ -59,6 +59,25 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         print("Successfully logged in with Facebook...")
         
+        showEmailAddress()
+
+        
+        
+        
+        
+    }
+    
+    
+    func showEmailAddress() {
+        let accessToken = FBSDKAccessToken.current()
+
+        let credential = FacebookAuthProvider.credential(withAccessToken: (accessToken?.tokenString)!)
+            
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        
+        
+        
+         //GEt Email Address
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
             
             if error != nil {
@@ -69,14 +88,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print(result)
             
         }
-        
-        
-        
-        
     }
-    
-    
-    
     
     //****Normal Email Login ********
     func loginUser() {

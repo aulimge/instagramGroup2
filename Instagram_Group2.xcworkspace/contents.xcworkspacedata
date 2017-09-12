@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:editProfileViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:Instagram_Group2.xcodeproj">
    </FileRef>
    <FileRef
