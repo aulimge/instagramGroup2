@@ -23,6 +23,7 @@
 		F81D11D01F667E52007FEDBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F81D11CF1F667E52007FEDBD /* Assets.xcassets */; };
 		F81D11D31F667E52007FEDBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F81D11D11F667E52007FEDBD /* LaunchScreen.storyboard */; };
 		F81D11DB1F668232007FEDBD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F81D11DA1F668232007FEDBD /* GoogleService-Info.plist */; };
+		F81D12011F67F5BC007FEDBD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D12001F67F5BC007FEDBD /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		F81D11D41F667E52007FEDBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F81D11DA1F668232007FEDBD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F81D11DC1F6781BA007FEDBD /* Instagram_Group2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Instagram_Group2.entitlements; sourceTree = "<group>"; };
+		F81D12001F67F5BC007FEDBD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				F81D11C81F667E52007FEDBD /* AppDelegate.swift */,
 				F81D11CA1F667E52007FEDBD /* ViewController.swift */,
 				F81D11CC1F667E52007FEDBD /* Main.storyboard */,
+				F81D12001F67F5BC007FEDBD /* SearchTableViewCell.swift */,
 				C06677621F67E5BF002672FD /* UploadPhotoViewController.swift */,
 				1712F7F41F67DD3200FE0C01 /* PictureCollectionViewCell.swift */,
 				1712F7F21F67DCF900FE0C01 /* ProfileCollectionViewCell.swift */,
@@ -279,6 +282,7 @@
 				1712F7C91F678DEB00FE0C01 /* searchViewController.swift in Sources */,
 				F81D11CB1F667E52007FEDBD /* ViewController.swift in Sources */,
 				1712F7CF1F67976E00FE0C01 /* ProfileViewController.swift in Sources */,
+				F81D12011F67F5BC007FEDBD /* SearchTableViewCell.swift in Sources */,
 				C017A8E71F668AD100EBF81F /* SignUpViewController.swift in Sources */,
 				F81D11C91F667E52007FEDBD /* AppDelegate.swift in Sources */,
 			);
