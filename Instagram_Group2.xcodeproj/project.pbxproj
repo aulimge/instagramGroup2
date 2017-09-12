@@ -98,12 +98,12 @@
 				F81D11CA1F667E52007FEDBD /* ViewController.swift */,
 				F81D11CC1F667E52007FEDBD /* Main.storyboard */,
 				C017A8E61F668AD100EBF81F /* SignUpViewController.swift */,
+				1712F7CE1F67976E00FE0C01 /* ProfileViewController.swift */,
 				C017A8E41F668AAB00EBF81F /* LoginViewController.swift */,
 				F81D11CF1F667E52007FEDBD /* Assets.xcassets */,
 				F81D11D11F667E52007FEDBD /* LaunchScreen.storyboard */,
 				F81D11D41F667E52007FEDBD /* Info.plist */,
 				F81D11DA1F668232007FEDBD /* GoogleService-Info.plist */,
-				1712F7CE1F67976E00FE0C01 /* ProfileViewController.swift */,
 			);
 			path = Instagram_Group2;
 			sourceTree = "<group>";
