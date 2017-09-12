@@ -264,6 +264,7 @@
                     <connections>
                         <segue destination="Tkk-47-6JW" kind="relationship" relationship="viewControllers" id="Zy0-N2-Yhc"/>
                         <segue destination="r9d-mf-MWm" kind="relationship" relationship="viewControllers" id="LiZ-at-vHQ"/>
+                        <segue destination="Vvk-Mf-RRg" kind="relationship" relationship="viewControllers" id="I8G-cX-ZYc"/>
                         <segue destination="cMu-oh-gno" kind="relationship" relationship="viewControllers" id="pyZ-TC-8ZW"/>
                     </connections>
                 </tabBarController>
@@ -455,6 +456,25 @@
             </objects>
             <point key="canvasLocation" x="4392.8000000000002" y="911.69415292353835"/>
         </scene>
+        <!--Upload Photo View Controller-->
+        <scene sceneID="rrM-G4-drk">
+            <objects>
+                <viewController id="Vvk-Mf-RRg" customClass="UploadPhotoViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FPg-kP-5UY"/>
+                        <viewControllerLayoutGuide type="bottom" id="NMT-Jf-GPI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h82-xo-keI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-plus_2_math_filled" id="crw-NN-ead"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="czF-uU-gPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3841" y="1776"/>
+        </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="2FH-0q-yOC">
             <objects>
@@ -535,6 +555,7 @@
         <image name="Instagram word Icon" width="383" height="131"/>
         <image name="icons8-hearts_filled" width="32" height="32"/>
         <image name="icons8-home" width="32" height="32"/>
+        <image name="icons8-plus_2_math_filled" width="32" height="32"/>
         <image name="icons8-search" width="32" height="32"/>
         <image name="icons8-sent_filled" width="32" height="32"/>
         <image name="icons8-topic_filled" width="32" height="32"/>
