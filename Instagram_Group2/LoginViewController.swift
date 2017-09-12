@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         //Login Email
         if Auth.auth().currentUser != nil {
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController else { return }
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
             
             //skip login page straight to homepage
             present(vc, animated:  true, completion:  nil)
@@ -112,7 +112,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
             if let validUser = user {
-                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "NavigationController") as? UINavigationController else { return }
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
                 
                 self.present(vc, animated:  true, completion:  nil)
                 
