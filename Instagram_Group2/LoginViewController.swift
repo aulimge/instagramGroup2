@@ -81,10 +81,35 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             print("Successfully logged in with our user: ", user ?? "")
-        }
+            
+            //later consider changing
+       //     guard let id = user?.uid else {return}
+            
+            //read from Firebase and check if FB Login already Created
+            let ref = Database.database().reference()
+       //     ref.child("Users").child(id).observe(.value, with: { (snapshot) in
+         //       if let name = snapshot["name"] as? String {
+                    
+                    
+         //       } else {
+                    //Create New User in Database using FB details
+                    self.fbSignUpCreateNewUser()
+          //      }
+         //   })
+            
+//            ref.child("students").observe(.childAdded, with: { (snapshot) in
+//                guard let info =  snapshot.value as? [String : Any] else {return}
+//                print("info : \(info)")
+//                print(snapshot)
+//                print(snapshot.key)
+
         
-        
-         //GEt Email Address
+
+    }
+    }
+    
+    func fbSignUpCreateNewUser() {
+        //GEt Email Address from FB
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
             
             if error != nil {
@@ -92,10 +117,32 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
+            if let info = result as? [String:Any],
+                let name = info["name"] as? String,
+                let email = info["email"] as? String,
+                let uid = info["id"] as? String {
+                
+                //save to FIRDatabase
+                let ref = Database.database().reference()
+                
+                let post : [String:Any] = ["name": name, "email": email]
+                
+                ref.child("Users").child(uid).setValue(post)
+                
+                //self.navigationController?.popViewController(animated: true)
+                guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
+                
+                //skip login page straight to homepage
+                self.present(vc, animated:  true, completion:  nil)
+                
+                
+            }
+            
             print(result ?? "")
             
         }
     }
+    
     
     //****Normal Email Login ********
     func loginUser() {
