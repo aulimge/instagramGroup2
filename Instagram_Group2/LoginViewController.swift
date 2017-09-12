@@ -13,6 +13,9 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    
+    var fbloginID : String = ""
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBtnTapped: UIButton!{
@@ -45,6 +48,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         didSet{
             fbLoginButton.delegate = self
             fbLoginButton.readPermissions = ["email","public_profile"]
+           
         }
     }
     
@@ -83,25 +87,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("Successfully logged in with our user: ", user ?? "")
             
             //later consider changing
-       //     guard let id = user?.uid else {return}
+            guard let id = user?.uid else {return}
+            self.fbloginID = id
             
             //read from Firebase and check if FB Login already Created
-            let ref = Database.database().reference()
-       //     ref.child("Users").child(id).observe(.value, with: { (snapshot) in
-         //       if let name = snapshot["name"] as? String {
-                    
-                    
+//            let ref = Database.database().reference()
+//            ref.child("Users").child(id).observe(.value, with: { (snapshot) in
+//                if let name = snapshot.["name"] as? String {
+            
+            
          //       } else {
                     //Create New User in Database using FB details
                     self.fbSignUpCreateNewUser()
           //      }
          //   })
             
-//            ref.child("students").observe(.childAdded, with: { (snapshot) in
-//                guard let info =  snapshot.value as? [String : Any] else {return}
-//                print("info : \(info)")
-//                print(snapshot)
-//                print(snapshot.key)
 
         
 
@@ -110,7 +110,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func fbSignUpCreateNewUser() {
         //GEt Email Address from FB
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, first_name, last_name, email"]).start { (connection, result, error) in
             
             if error != nil {
                 print("Failed to start graph request:", error ?? "")
@@ -120,14 +120,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let info = result as? [String:Any],
                 let name = info["name"] as? String,
                 let email = info["email"] as? String,
-                let uid = info["id"] as? String {
+                let firstName = info["first_name"] as? String,
+                let lastName = info["last_name"] as? String {
+                //let uid = info["id"] as? String {
+ 
+
                 
                 //save to FIRDatabase
                 let ref = Database.database().reference()
                 
-                let post : [String:Any] = ["name": name, "email": email]
+                let post : [String:Any] = ["id": self.fbloginID ,"name": name, "email": email, "firstName": firstName,"lastName": lastName]
                 
-                ref.child("Users").child(uid).setValue(post)
+                //ref.child("Users").child(uid).setValue(post)
+                ref.child("Users").child(self.fbloginID).setValue(post)
                 
                 //self.navigationController?.popViewController(animated: true)
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
