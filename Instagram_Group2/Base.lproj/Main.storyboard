@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -141,40 +142,94 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="431" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fvQ-OM-msh">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="115" width="375" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="550" id="Jop-MA-NBI"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="431" id="5T1-YL-Kg3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeCell" rowHeight="431" id="5T1-YL-Kg3">
                                         <rect key="frame" x="0.0" y="28" width="375" height="431"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5T1-YL-Kg3" id="cmy-5S-Zgj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="430.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9AE-Ta-Fnf">
-                                                    <rect key="frame" x="8" y="27" width="367" height="314"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instagram icon" translatesAutoresizingMaskIntoConstraints="NO" id="9AE-Ta-Fnf">
+                                                    <rect key="frame" x="4" y="58" width="367" height="314"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-hearts_filled" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-iL-337">
-                                                    <rect key="frame" x="8" y="349" width="49" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-hearts_filled" translatesAutoresizingMaskIntoConstraints="NO" id="cYC-iL-337">
+                                                    <rect key="frame" x="8" y="369" width="49" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="7IC-52-1f1"/>
+                                                        <constraint firstAttribute="height" constant="43" id="Vdk-J5-Zyl"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-topic_filled" translatesAutoresizingMaskIntoConstraints="NO" id="ee5-Hp-ePE">
-                                                    <rect key="frame" x="65" y="349" width="49" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-topic_filled" translatesAutoresizingMaskIntoConstraints="NO" id="ee5-Hp-ePE">
+                                                    <rect key="frame" x="65" y="369" width="49" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="wRz-tz-2ke"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-user" translatesAutoresizingMaskIntoConstraints="NO" id="uM1-HD-lOm">
+                                                    <rect key="frame" x="6" y="8" width="51" height="52"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="52" id="3vJ-Ly-PZa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-sent_filled" translatesAutoresizingMaskIntoConstraints="NO" id="nkz-Ln-UTu">
+                                                    <rect key="frame" x="122" y="369" width="49" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="bix-mR-Y7L"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rve-no-6fM">
+                                                    <rect key="frame" x="74" y="8" width="261" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="261" id="DGH-SO-tva"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9AE-Ta-Fnf" firstAttribute="leading" secondItem="cmy-5S-Zgj" secondAttribute="leadingMargin" constant="-4" id="6kk-0G-fiN"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9AE-Ta-Fnf" secondAttribute="bottom" constant="50.5" id="9ta-zk-H59"/>
+                                                <constraint firstItem="ee5-Hp-ePE" firstAttribute="leading" secondItem="cYC-iL-337" secondAttribute="trailing" constant="8" symbolic="YES" id="A93-0n-Ztx"/>
+                                                <constraint firstItem="ee5-Hp-ePE" firstAttribute="bottom" secondItem="nkz-Ln-UTu" secondAttribute="bottom" id="Dl0-Ga-yme"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rve-no-6fM" secondAttribute="trailing" constant="32" id="GVq-dM-Qxu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cYC-iL-337" secondAttribute="bottom" constant="10.5" id="JnK-W9-jzL"/>
+                                                <constraint firstItem="cYC-iL-337" firstAttribute="bottom" secondItem="ee5-Hp-ePE" secondAttribute="bottom" id="KxV-sU-njQ"/>
+                                                <constraint firstItem="nkz-Ln-UTu" firstAttribute="leading" secondItem="ee5-Hp-ePE" secondAttribute="trailing" constant="8" symbolic="YES" id="M4c-rl-a8x"/>
+                                                <constraint firstItem="rve-no-6fM" firstAttribute="leading" secondItem="uM1-HD-lOm" secondAttribute="trailing" constant="17" id="OaO-Lt-0FD"/>
+                                                <constraint firstItem="9AE-Ta-Fnf" firstAttribute="centerY" secondItem="cmy-5S-Zgj" secondAttribute="centerY" id="Upg-aB-IRi"/>
+                                                <constraint firstItem="9AE-Ta-Fnf" firstAttribute="centerX" secondItem="cmy-5S-Zgj" secondAttribute="centerX" id="hHj-gN-hAV"/>
+                                                <constraint firstItem="uM1-HD-lOm" firstAttribute="top" secondItem="cmy-5S-Zgj" secondAttribute="topMargin" id="hru-sM-7DN"/>
+                                                <constraint firstItem="rve-no-6fM" firstAttribute="top" secondItem="uM1-HD-lOm" secondAttribute="top" id="k9V-Ob-ax8"/>
+                                                <constraint firstItem="ee5-Hp-ePE" firstAttribute="top" secondItem="nkz-Ln-UTu" secondAttribute="top" id="nJA-H0-Yhs"/>
+                                                <constraint firstItem="uM1-HD-lOm" firstAttribute="leading" secondItem="cmy-5S-Zgj" secondAttribute="leadingMargin" constant="-2" id="o6A-6q-7d8"/>
+                                                <constraint firstItem="9AE-Ta-Fnf" firstAttribute="top" secondItem="rve-no-6fM" secondAttribute="bottom" constant="8" symbolic="YES" id="peW-Ef-f2y"/>
+                                                <constraint firstItem="cYC-iL-337" firstAttribute="leading" secondItem="cmy-5S-Zgj" secondAttribute="leadingMargin" id="qbH-Wb-teE"/>
+                                                <constraint firstItem="cYC-iL-337" firstAttribute="top" secondItem="ee5-Hp-ePE" secondAttribute="top" id="vp2-7W-hiW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instagram word Icon" translatesAutoresizingMaskIntoConstraints="NO" id="NoG-BA-nVs">
+                                <rect key="frame" x="93" y="72" width="189" height="39"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fvQ-OM-msh" secondAttribute="trailing" id="L1D-1p-q57"/>
-                            <constraint firstItem="fvQ-OM-msh" firstAttribute="leading" secondItem="Z2A-0g-472" secondAttribute="leading" id="OUc-Db-BY6"/>
-                            <constraint firstItem="wRL-P0-WPc" firstAttribute="top" secondItem="fvQ-OM-msh" secondAttribute="bottom" id="hQb-uD-aJs"/>
-                            <constraint firstItem="fvQ-OM-msh" firstAttribute="top" secondItem="U61-Zg-qrj" secondAttribute="bottom" id="jJq-GH-UDX"/>
+                            <constraint firstItem="fvQ-OM-msh" firstAttribute="top" secondItem="NoG-BA-nVs" secondAttribute="bottom" constant="4" id="2gI-k1-mNn"/>
+                            <constraint firstItem="fvQ-OM-msh" firstAttribute="leading" secondItem="Z2A-0g-472" secondAttribute="leading" id="3KD-hx-Oc7"/>
+                            <constraint firstItem="NoG-BA-nVs" firstAttribute="top" secondItem="U61-Zg-qrj" secondAttribute="bottom" constant="8" symbolic="YES" id="60L-k9-7yE"/>
+                            <constraint firstItem="NoG-BA-nVs" firstAttribute="leading" secondItem="Z2A-0g-472" secondAttribute="leadingMargin" constant="77" id="Euq-Yn-e3W"/>
+                            <constraint firstItem="NoG-BA-nVs" firstAttribute="centerX" secondItem="fvQ-OM-msh" secondAttribute="centerX" id="aa6-ZP-Gne"/>
+                            <constraint firstAttribute="trailing" secondItem="fvQ-OM-msh" secondAttribute="trailing" id="sT6-PR-lHT"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fvQ-OM-msh" secondAttribute="bottom" constant="2" id="wtf-7R-UX8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8xf-GZ-Kdd">
@@ -189,6 +244,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="fvQ-OM-msh" id="ZO0-yg-u29"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s90-ZD-Aew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,10 +373,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Instagram icon" width="1000" height="648"/>
+        <image name="Instagram word Icon" width="383" height="131"/>
         <image name="icons8-hearts_filled" width="32" height="32"/>
         <image name="icons8-home" width="32" height="32"/>
         <image name="icons8-search" width="32" height="32"/>
+        <image name="icons8-sent_filled" width="32" height="32"/>
         <image name="icons8-topic_filled" width="32" height="32"/>
+        <image name="icons8-user" width="32" height="32"/>
         <image name="icons8-user_filled" width="32" height="32"/>
     </resources>
 </document>
