@@ -293,7 +293,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileTopCell" id="JWX-Ub-Eew">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileCell" id="JWX-Ub-Eew" customClass="ProfileCollectionViewCell" customModule="Instagram_Group2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="389" height="239"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -406,8 +406,16 @@
                                             <constraint firstItem="WpB-yS-mvO" firstAttribute="leading" secondItem="JWX-Ub-Eew" secondAttribute="leading" constant="101" id="v1q-a8-iDR"/>
                                         </constraints>
                                         <size key="customSize" width="389" height="239"/>
+                                        <connections>
+                                            <outlet property="editButton" destination="Sg5-dc-VfF" id="Xtj-ar-gki"/>
+                                            <outlet property="labelFollowers" destination="rD2-Ps-5Lr" id="jge-tf-JPg"/>
+                                            <outlet property="labelFollowing" destination="Jcj-fe-HHW" id="LOp-61-CNc"/>
+                                            <outlet property="labelPost" destination="kMz-uk-yaT" id="b5T-7K-Gfs"/>
+                                            <outlet property="labelUser" destination="lMB-vp-ScP" id="4VJ-xb-wF6"/>
+                                            <outlet property="profileImageView" destination="BRL-oZ-kaf" id="eGr-wc-Sni"/>
+                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileButtomCell" id="TOD-M1-Izo">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pictureCollectionCell" id="TOD-M1-Izo" customClass="PictureCollectionViewCell" customModule="Instagram_Group2" customModuleProvider="target">
                                         <rect key="frame" x="118" y="249" width="153" height="139"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -426,6 +434,9 @@
                                             <constraint firstItem="w1X-7T-Elf" firstAttribute="leading" secondItem="TOD-M1-Izo" secondAttribute="leading" id="si1-Wt-QEE"/>
                                         </constraints>
                                         <size key="customSize" width="153" height="139"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="w1X-7T-Elf" id="k0J-3t-Q8f"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
