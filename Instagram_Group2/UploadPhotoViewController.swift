@@ -43,6 +43,7 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
             picker.allowsEditing = false
             picker.sourceType = UIImagePickerControllerSourceType.camera
             picker.cameraCaptureMode = .photo
+//            picker.supportedInterfaceOrientations = [UIInterfaceOrientationMask.portrait]
             picker.modalPresentationStyle = .fullScreen
             present(picker,animated: true,completion: nil)
         } else {
