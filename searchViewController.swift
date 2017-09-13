@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
+
 
 class searchViewController: UIViewController {
 
+    var ref : DatabaseReference!
+    var users : [User] = []
     
     @IBOutlet weak var searchTextField: UITextField!
     
