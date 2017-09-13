@@ -179,12 +179,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
             if let validUser = user {
+               print(validUser)
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
                 
-                //if let Auth().currentUser?.uid = user
-
-               // g_userId = Auth().currentUser?.uid
-               // g_userName = ""
                 
                 self.present(vc, animated:  true, completion:  nil)
                 

@@ -19,6 +19,8 @@ class ProfileViewController: UIViewController {
     var posts: [Post] = []
     var profilePicURL : String = ""
     
+    var totalpost = 0
+    
     var userId : String = ""
     var userName : String = ""
     
@@ -48,18 +50,16 @@ class ProfileViewController: UIViewController {
                 let id = info["id"] as? String,
                 let likeCount = info["likeCount"] as? Int,
                 let isLiked = info["isLiked"] as? Bool,
-                let username = info["username"] as? String
+                let p_username = info["username"] as? String
             
             {
                 
-          
-            
-           // let newPost = Contact(anID: self.userId , aUsername: self.userName, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: imageFileName)
-            
-                let newpost : [String : Any] = ["caption" : "Hello there", "id": self.userId, "username": self.userName, "isLiked": false, "likeCount": 0,"likes": "", "imageURL": imageURL, "imageFilename": imageFileName]
-            
+                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFileName, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: p_username)
+                print(newPost)
                 
-//                self.posts.append(newpost)
+                
+                
+                self.posts.append(newPost)
                 print(snapshot.value)
                 
             }
@@ -71,13 +71,8 @@ class ProfileViewController: UIViewController {
         })
   
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-}
+} // end ProfileViewController
 
 extension ProfileViewController: UICollectionViewDataSource {
     
@@ -89,7 +84,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         if section == 0 {
             return 1
         }
-        return 10 //posts.count
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,14 +97,19 @@ extension ProfileViewController: UICollectionViewDataSource {
             if let imageurl = selectedContact?.imageURL {
             
             headerViewCell.profileImageView.sd_setImage(with: URL(string: imageurl))
+            headerViewCell.labelPost.text = String(posts.count)
+
+                
+                
             }
             
             return headerViewCell
 
-        }else {
+        } else {
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCollectionCell", for: indexPath) as! PictureCollectionViewCell
-//            cell.post = posts[indexPath.row]
+        //   cell.post = posts[indexPath.row].caption
+            
             cell.backgroundColor = UIColor.red
             return cell
         }
