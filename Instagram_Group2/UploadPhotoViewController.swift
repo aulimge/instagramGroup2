@@ -23,15 +23,20 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
     //delegate var recv
     var userId : String = ""
     var userName : String = ""
+
     
     var ref : DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       //to remove after testing
-       userId = "fX02GOg2AlRF4PBn1fyFXQDdqvs1"
-       userName  = "max"
+        //Get User Id
+        ref = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        userId = uid
+        
+        userName = "audrey"
+       
         
         picker.delegate = self
     }
@@ -74,28 +79,14 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
 
        //save the ImageURL to posts
         ref = Database.database().reference()
-    
-//        guard let p_username = userName,
-//            let username = nameTextField.text,
-//            let ageString = ageTextField.text,
-//            let age = Int(ageString)
-//            //let image = profileImageView.image
-//            else {return}
-    
-    
-//    var caption: String?
-//    var photoURL: String?
-//    var uid: String?   == not required
-//    var id: String?
-//    var likeCount: Int?
-//    var likes: Dictionary<String, Any>?
-//    var isLiked: Bool?
-    
+ 
     
         let post : [String:Any] = ["caption" : "Hello there", "id": self.userId ,"username": self.userName, "isLiked": false, "likeCount": 0,"likes": "", "imageURL": profilePicURL,"imageFilename": imageFilename]
     
-   
-        ref.child("Posts").child(self.userId).setValue(post)    
+        let randomID = String(Int(Date().timeIntervalSince1970))
+    
+    
+        ref.child("Posts").child(randomID).setValue(post)
     
     
 } //saveButton
@@ -122,7 +113,7 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
         let ref = Storage.storage().reference()
         
         let timeStamp = Date().timeIntervalSince1970
-        guard let imageData = UIImageJPEGRepresentation(image, 0.5) else { return }
+        guard let imageData = UIImageJPEGRepresentation(image, 0.2) else { return }
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
@@ -138,6 +129,8 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
                 let downloadPath = meta?.downloadURL()?.absoluteString{
                 self.profilePicURL = downloadPath
                 self.imageView.image = image
+                
+                self.profilePicURL = downloadPath
             }
         }
     }

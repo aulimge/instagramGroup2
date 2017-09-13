@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     var posts : [Post] = []
     var ref: DatabaseReference!
     
-    
+    //Define private var for this module
+    var g_userId : String = ""
+    var g_userName : String = ""
     
     @IBOutlet weak var tableView: UITableView!{
         didSet{
@@ -70,7 +72,7 @@ class ViewController: UIViewController {
                 
                 
                 //create new contact object
-                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: false, anUsername: username)
+                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: username)
                 print(newPost)
                 
                 //append to contact array
@@ -147,6 +149,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
+        g_userId = userId
+        g_userName = userName
+        
+        
         fetchPost()
         
         
@@ -183,7 +189,8 @@ extension ViewController : UITableViewDataSource{
        
         cell.captionLabel.text = posts[indexPath.row].caption
         
-        if posts[indexPath.row].isLiked == true {
+        
+        if posts[indexPath.row].isLiked! == true {
             cell.likeImageView.image = (#imageLiteral(resourceName: "likeIcon_filled"))
 
         } else {
@@ -191,11 +198,11 @@ extension ViewController : UITableViewDataSource{
         }
             
         
-        if posts[indexPath.row].likeCount == 0 {
+        if posts[indexPath.row].likeCount! == 0 {
             cell.likeCountButton.titleLabel?.text = "Be the First to like"
             
         } else {
-             cell.likeCountButton.titleLabel?.text = "\(posts[indexPath.row].likeCount) Likes"
+             cell.likeCountButton.titleLabel?.text = "\(posts[indexPath.row].likeCount!) Likes"
         }
 
         cell.nameLabel.text = posts[indexPath.row].username

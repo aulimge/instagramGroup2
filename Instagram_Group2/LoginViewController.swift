@@ -16,9 +16,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var fbloginID : String = ""
     
-    //Define private var for this module
-    var g_userId : String = ""
-    var g_userName : String = ""
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -151,9 +148,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.present(vc, animated:  true, completion:  nil)
                 
                 
-                //assign the var to pass
-                self.g_userId = self.fbloginID
-                self.g_userName = name
                 
             }
             
@@ -209,35 +203,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-
-            guard let destination = segue.destination as?
-                ViewController
-                else {return}
-            
-            destination.userId = g_userId
-            destination.userName = g_userName
-        
-        //Pass data to UploadPhoto
-        guard let destination2 = segue.destination as?
-            UploadPhotoViewController
-            else {return}
-        
-        destination2.userId = g_userId
-        destination2.userName = g_userName
-        
-        //Pass data to Profile
-        guard let destination3 = segue.destination as?
-            ProfileViewController
-        else {return}
-        
-        destination3.userId = g_userId
-        destination3.userName = g_userName
-        
-    }
-
+   
 }
 
 
