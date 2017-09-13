@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
 
 class ProfileViewController: UIViewController {
 
-   
+    var selectedContact : User?
+    var ref : DatabaseReference!
+    var idEdit : Bool = true
+    
+    var profilePicURL : String = ""
     
     
     
