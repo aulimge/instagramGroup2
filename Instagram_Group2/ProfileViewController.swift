@@ -41,8 +41,7 @@ class ProfileViewController: UIViewController {
             
             guard let info = snapshot.value as? [String: Any] else {return}
             
-            if let username = info["id"] as? String,
-                let caption = info["caption"] as? String,
+            if let caption = info["caption"] as? String,
                 let imageURL = info["imageURL"] as? String,
                 let imageFileName = info["imageFileName"] as? String,
                 let isLiked = info["isLiked"] as? Bool,
@@ -59,7 +58,7 @@ class ProfileViewController: UIViewController {
                 let newpost : [String : Any] = ["caption" : "Hello there", "id": self.userId, "username": self.userName, "isLiked": false, "likeCount": 0,"likes": "", "imageURL": imageURL, "imageFilename": imageFileName]
             
                 
-           //     self.posts.append(newpost)
+//                self.posts.append(newpost)
                 print(snapshot.value)
                 
             }
