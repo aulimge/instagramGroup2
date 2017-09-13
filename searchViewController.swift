@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseDatabase
-import FirebaseStorage
 
 
 class searchViewController: UIViewController {
@@ -30,7 +29,6 @@ class searchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         fetchContacts()
     }
     
@@ -43,7 +41,7 @@ class searchViewController: UIViewController {
         ref = Database.database().reference()
         
         //observer child added works as a loop return each child individually
-        ref.child("users").observe(.childAdded, with: { (snapshot) in
+        ref.child("Users").observe(.childAdded, with: { (snapshot) in
             guard let info =  snapshot.value as? [String : Any] else {return}
             print("info : \(info)")
             print(snapshot)
@@ -51,13 +49,18 @@ class searchViewController: UIViewController {
             
             //cast snapshot.value to correct Datatype
             if let username = info["name"] as? String,
-                let fullname = info["fullame"] as? String,
-                let email = info["email"] as? String,
+                let firstname = info["firstName"] as? String,
+                let lastname = info["lastName"] as? String,
+                //let email = info["email"] as? String,
                 let imageURL = info["imageURL"] as? String,
-                let filename = info["filename"] as? String {
+                let filename = info["imageFilename"] as? String {
                 
+                
+                let fullname =  "\(firstname) \(lastname)"
                 //create new contact object
                  let newContact = Contact(anID: snapshot.key, aUsername: username, aFullname: fullname, anEmail: "", anImageURL: imageURL, anFilename: filename)
+                
+                print(newContact)
                 
                 //append to contact array
                 self.contacts.append(newContact)
@@ -73,7 +76,7 @@ class searchViewController: UIViewController {
             }
         })
         
-        ref.child("users").observe(.value, with: {
+        ref.child("Users").observe(.value, with: {
             (snapshot) in
             guard let info = snapshot.value as? [String : Any]
                 else {return}
@@ -82,7 +85,7 @@ class searchViewController: UIViewController {
         
 
         
-        ref.child("users").observe(.childChanged, with: { (snapshot) in
+        ref.child("Users").observe(.childChanged, with: { (snapshot) in
             guard let info = snapshot.value as? [String:Any] else {return}
             
             guard let username = info["name"] as? String,
@@ -160,7 +163,7 @@ extension searchViewController : UITableViewDelegate {
         
         let selectedContact = contacts[indexPath.row]
         
-       // destination.selectedContact = selectedContact
+        destination.selectedContact = selectedContact
         navigationController?.pushViewController(destination, animated: true)
         
         

@@ -58,7 +58,8 @@ class SignUpViewController: UIViewController {
             if let validUser = user {
                 let ref = Database.database().reference()
                 
-                let post : [String:Any] = ["email": email, "name": userName]
+               // let post : [String:Any] = ["email": email, "name": userName]
+                let post : [String:Any] = ["name": userName, "email": email, "firstName": "" ,"lastName": "", "imageURL": "","imageFilename": ""]
                 
                 ref.child("Users").child(validUser.uid).setValue(post)
                 
