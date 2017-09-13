@@ -250,6 +250,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sg5-dc-VfF">
                                                             <rect key="frame" x="8" y="62" width="252" height="30"/>
                                                             <state key="normal" title="Edit"/>
+                                                            <connections>
+                                                                <segue destination="m71-Zr-hVK" kind="show" id="Qic-jC-AEH"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
