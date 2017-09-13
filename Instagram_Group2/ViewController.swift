@@ -58,18 +58,19 @@ class ViewController: UIViewController {
             //cast snapshot.value to correct Datatype
             
             if let caption = info["caption"] as? String,
-                let photoURL = info["photoURL"] as? String,
-                let uid = info["uid"] as? String,
+                let imageURL = info["imageURL"] as? String,
+                let imageFilename = info["imageFilename"] as? String,
                 let id = info["id"] as? String,
                 let likeCount = info["likeCount"] as? Int,
-                let likes = info["likes"] as? Dictionary<String, Any>?,
-            let isLiked = info["isLike"] as? Bool,
-            let username = info["username"] as? String{
+                let likes = info["likes"] as? String,
+            let isLiked = info["isLiked"] as? Bool,
+            let username = info["username"] as? String {
+                
                 
                 
                 
                 //create new contact object
-                let newPost = Post(aCaption: caption, aPhotoURL: photoURL, anUid: uid, anId: id, aLikeCount: likeCount, aLikes: likes, anIsLiked: isLiked, anUsername: username)
+                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: false, anUsername: username)
                 print(newPost)
                 
                 //append to contact array
@@ -115,12 +116,11 @@ class ViewController: UIViewController {
             guard let info = snapshot.value as? [String:Any] else {return}
             
             guard let caption = info["caption"] as? String,
-                let photoURL = info["photoURL"] as? String,
-                let uid = info["uid"] as? String,
+                let imageURL = info["imageURL"] as? String,
+                let imageFilename = info["imageFilename"] as? String,
                 let id = info["id"] as? String,
                 let likeCount = info["likeCount"] as? Int,
-                let likes = info["likes"] as? Dictionary<String, Any>?,
-                let isLiked = info["isLike"] as? Bool,
+                let isLiked = info["isLiked"] as? Bool,
                 let username = info["username"] as? String else {return}
             
             if let matchedIndex = self.posts.index(where: { (post) -> Bool in
@@ -128,11 +128,13 @@ class ViewController: UIViewController {
             }) {
                 let changedPost = self.posts[matchedIndex]
                 changedPost.caption = caption
-                changedPost.photoURL = photoURL
-                changedPost.uid = uid
+                changedPost.imageURL = imageURL
+                changedPost.imageFilename = imageFilename
                 changedPost.id = id
                 changedPost.likeCount = likeCount
-                changedPost.likes = likes
+                if let likes = info["likes"] as? [String:Any] {
+                    changedPost.likes = likes
+                }
                 changedPost.isLiked = isLiked
                 changedPost.username = username
                 
@@ -159,14 +161,46 @@ extension ViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath)
+        
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as?
+            HomeTableViewCell
+            else { return UITableViewCell() }
+        
+            
         
         //Read all the post here
+        cell.nameLabel.text = posts[indexPath.row].username
+        let imageURL = posts[indexPath.row].imageURL
+        cell.postImageView.loadImage(from: imageURL!)
         
         
-        //setup
-        //cell.textLabel?.text = "\(indexPath.row )"
-        //cell.detailTextLabel?.text = pokemons[indexPath.row].name
+        
+        
+       // let imageURL2 = posts[indexPath.row].
+        // cell.postImageView.loadImage(from: imageURL!)
+        
+       
+        cell.captionLabel.text = posts[indexPath.row].caption
+        
+        if posts[indexPath.row].isLiked == true {
+            cell.likeImageView.image = (#imageLiteral(resourceName: "likeIcon_filled"))
+
+        } else {
+            cell.likeImageView.image = (#imageLiteral(resourceName: "icons8-like"))
+        }
+            
+        
+        if posts[indexPath.row].likeCount == 0 {
+            cell.likeCountButton.titleLabel?.text = "Be the First to like"
+            
+        } else {
+             cell.likeCountButton.titleLabel?.text = "\(posts[indexPath.row].likeCount) Likes"
+        }
+
+        cell.nameLabel.text = posts[indexPath.row].username
+        
+        
         
         return cell
         

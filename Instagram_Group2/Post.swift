@@ -23,24 +23,28 @@ import FirebaseAuth
 
 class Post {
     var caption: String?
-    var photoURL: String?
-    var uid: String?
+    var imageURL: String?
+    var imageFilename: String?
     var id: String?
     var likeCount: Int?
-    var likes: Dictionary<String, Any>?
+    var likes: [String:Any]?
     var isLiked: Bool?
     var username : String?
     
     init() {}
     
-    init(aCaption : String, aPhotoURL : String, anUid : String, anId : String, aLikeCount : Int, aLikes : Dictionary<String, Any>?, anIsLiked : Bool, anUsername : String){
+    init(aCaption : String, aImageURL : String, aImageFilename : String, anId : String, aLikeCount : Int, aLikes : [String:Any]?, anIsLiked : Bool, anUsername : String) {
         
         caption = aCaption
-        photoURL = aPhotoURL
-        uid = anUid
+        imageURL = aImageURL
+        imageFilename = aImageFilename
         id = anId
         likeCount = aLikeCount
-        likes = aLikes
+
+        if let like = aLikes {
+            likes = like
+        }
+        
         isLiked = anIsLiked
         username = anUsername
         
@@ -50,20 +54,33 @@ class Post {
 extension Post {
     
     static func transformPost(postDictionary: [String: Any], key: String) -> Post {
-        let post = Post()
-        
-        post.id = key
-        post.caption = postDictionary["caption"] as? String
-        post.photoURL = postDictionary["photoURL"] as? String
-        post.uid = postDictionary["uid"] as? String
-        post.likeCount = postDictionary["likesCount"] as? Int
-        post.likes = postDictionary["likes"] as? Dictionary<String, Any>
-        
-        if let currentUserID = Auth.auth().currentUser?.uid {
-            if post.likes != nil {
-                post.isLiked = post.likes![currentUserID] != nil
+        var post = Post()
+//        
+//        post.id = key
+        if let caption = postDictionary["caption"] as? String,
+        let imageURL = postDictionary["imageURL"] as? String,
+        let imageFilename = postDictionary["imageFilename"] as? String,
+        let postID = postDictionary["uid"] as? String,
+            let postLikeCount = postDictionary["likesCount"] as? Int,
+        let postIsLiked = postDictionary["isLiked"] as? Bool,
+        let username = postDictionary["username"] as? String {
+            
+            let tempPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: postID, aLikeCount: postLikeCount, aLikes: nil, anIsLiked: postIsLiked, anUsername: username)
+            
+            if let likes = postDictionary["likes"] as? [String:Any] {
+                post.likes = likes
             }
+            
+            post = tempPost
+            
+            
         }
+        
+//        if let currentUserID = Auth.auth().currentUser?.uid {
+//            if post.likes != nil {
+//                post.isLiked = post.likes[currentUserID] != nil
+//            }
+//        }
         
         return post
     }
