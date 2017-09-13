@@ -7,8 +7,23 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PictureCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    var post: Post? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    func updateView() {
+        if let photoURL = post?.imageUrl {
+            imageView.sd_setImage(with: URL(string: photoURL))
+        }
+    }
+    
+    
 }
