@@ -37,26 +37,35 @@ class ProfileViewController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else {return}
 
-        ref.child("Users").child(uid).observe(.value, with: { (snapshot) in
+        ref.child("Posts").child(uid).observe(.value, with: { (snapshot) in
             
             guard let info = snapshot.value as? [String: Any] else {return}
             
-            if let email = info["email"] as? String,
-                let firstName = info["firstName"] as? String,
-                let lastName = info ["lastName"] as? String,
+            if let username = info["id"] as? String,
+                let caption = info["caption"] as? String,
                 let imageURL = info["imageURL"] as? String,
-                let imageFileName = info["imageFileName"] as? String
+                let imageFileName = info["imageFileName"] as? String,
+                let isLiked = info["isLiked"] as? Bool,
+                let likeCount = info["likeCount"] as? Int,
+                let likes = info["likes"] as? String
+                
                 
             {
                 
-            let fullname = "\(firstName) \(lastName)"
+          
             
-            let user = Contact(anID: self.userId , aUsername: self.userName, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: imageFileName)
+           // let newPost = Contact(anID: self.userId , aUsername: self.userName, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: imageFileName)
+            
+                let newpost : [String : Any] = ["caption" : "Hello there", "id": self.userId, "username": self.userName, "isLiked": false, "likeCount": 0,"likes": "", "imageURL": imageURL, "imageFilename": imageFileName]
+            
+                
+           //     self.posts.append(newpost)
+                print(snapshot.value)
                 
             }
             
-            
-            print(snapshot.value)
+            self.collectionVIew.reloadData()
+
             
             
         })
