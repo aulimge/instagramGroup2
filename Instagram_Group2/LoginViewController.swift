@@ -220,7 +220,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             destination.userId = g_userId
             destination.userName = g_userName
         
+        //Pass data to UploadPhoto
+        guard let destination2 = segue.destination as?
+            UploadPhotoViewController
+            else {return}
         
+        destination2.userId = g_userId
+        destination2.userName = g_userName
+        
+        //Pass data to Profile
+        guard let destination3 = segue.destination as?
+            ProfileViewController
+        else {return}
+        
+        destination3.userId = g_userId
+        destination3.userName = g_userName
         
     }
 

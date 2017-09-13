@@ -92,8 +92,6 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
 //    var isLiked: Bool?
     
     
-      //  let post : [String : Any] = ["caption" : "Hello there","imageURL" : self.profilePicURL,,"id": self.userId,"id": self.userId]
-    
         let post : [String:Any] = ["caption" : "Hello there", "id": self.userId ,"username": self.userName, "isLiked": false, "likeCount": 0,"likes": "", "imageURL": profilePicURL,"imageFilename": imageFilename]
     
    
