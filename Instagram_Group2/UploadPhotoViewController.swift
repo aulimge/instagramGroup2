@@ -18,14 +18,20 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
     
     let picker = UIImagePickerController()
     var profilePicURL : String = ""
+    var imageFilename : String = ""
     
+    //delegate var recv
     var userId : String = ""
+    var userName : String = ""
+    
+    var ref : DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // userId = (Auth().currentUser?.uid)!
-      //  print(userId)
+       //to remove after testing
+       userId = "fX02GOg2AlRF4PBn1fyFXQDdqvs1"
+       userName  = "max"
         
         picker.delegate = self
     }
@@ -68,22 +74,30 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
 
        //save the ImageURL to posts
         ref = Database.database().reference()
-        guard let id = selectedContact?.id,
-            let name = "AAA"//nameTextField.text,
-            //let image = profileImageView.image
-            else {return}
-        
-        let post : [String : Any] = ["name" : name, "imageURL" : self.profilePicURL]
-        
-        //dig paths to reach a specific student
-  //      ref.child("students").child(id).updateChildValues(post)
-//        editButton.setTitle("Edit", for: .normal)
-//        idEdit = true
-//        nameTextField.isUserInteractionEnabled = false
-//        ageTextField.isUserInteractionEnabled = false
-
+    
+//        guard let p_username = userName,
+//            let username = nameTextField.text,
+//            let ageString = ageTextField.text,
+//            let age = Int(ageString)
+//            //let image = profileImageView.image
+//            else {return}
     
     
+//    var caption: String?
+//    var photoURL: String?
+//    var uid: String?   == not required
+//    var id: String?
+//    var likeCount: Int?
+//    var likes: Dictionary<String, Any>?
+//    var isLiked: Bool?
+    
+    
+      //  let post : [String : Any] = ["caption" : "Hello there","imageURL" : self.profilePicURL,,"id": self.userId,"id": self.userId]
+    
+        let post : [String:Any] = ["caption" : "Hello there", "id": self.userId ,"username": self.userName, "isLiked": false, "likeCount": 0,"likes": "", "imageURL": profilePicURL,"imageFilename": imageFilename]
+    
+   
+        ref.child("Posts").child(self.userId).setValue(post)    
     
     
 } //saveButton
@@ -114,6 +128,8 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
+        
+        imageFilename = "\(timeStamp).jpeg"
         
         ref.child("\(timeStamp).jpeg").putData(imageData, metadata: metaData) { (meta, error) in
             if let validError = error {
