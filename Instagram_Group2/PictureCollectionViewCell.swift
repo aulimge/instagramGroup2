@@ -20,7 +20,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
     }
     
     func updateView() {
-        if let photoURL = post?.imageUrl {
+        if let photoURL = post?.photoURL {
             imageView.sd_setImage(with: URL(string: photoURL))
         }
     }

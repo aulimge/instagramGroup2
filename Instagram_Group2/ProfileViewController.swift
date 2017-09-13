@@ -18,7 +18,8 @@ class ProfileViewController: UIViewController {
     var idEdit : Bool = true
     var posts: [Post] = []
     var profilePicURL : String = ""
-    
+    var userId : String = ""
+    var userName : String = ""
     
     @IBOutlet weak var collectionVIew: UICollectionView!
     
@@ -26,6 +27,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userId = "fX02GOg2AlRF4PBn1fyFXQDdqvs1"
+        userName  = "max"
         
         collectionVIew.dataSource = self
         collectionVIew.delegate = self
@@ -35,6 +38,23 @@ class ProfileViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else {return}
 
         ref.child("Users").child(uid).observe(.value, with: { (snapshot) in
+            
+            guard let info = snapshot.value as? [String: Any] else {return}
+            
+            if let email = info["email"] as? String,
+                let firstName = info["firstName"] as? String,
+                let lastName = info ["lastName"] as? String,
+                let imageURL = info["imageURL"] as? String,
+                let imageFileName = info["imageFileName"] as? String
+                
+            {
+                
+            let fullname = "\(firstName) \(lastName)"
+            
+            let user = Contact(anID: self.userId , aUsername: self.userName, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: imageFileName)
+                
+            }
+            
             
             print(snapshot.value)
             
