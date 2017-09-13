@@ -26,6 +26,8 @@
 		F81D12011F67F5BC007FEDBD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D12001F67F5BC007FEDBD /* SearchTableViewCell.swift */; };
 		F81D12031F6821D8007FEDBD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D12021F6821D8007FEDBD /* Post.swift */; };
 		F81D12091F682696007FEDBD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D12081F682696007FEDBD /* User.swift */; };
+		F81D120C1F68C8BE007FEDBD /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D120B1F68C8BE007FEDBD /* helper.swift */; };
+		F81D120E1F68CF29007FEDBD /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81D120D1F68CF29007FEDBD /* Contact.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		F81D12001F67F5BC007FEDBD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		F81D12021F6821D8007FEDBD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		F81D12081F682696007FEDBD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		F81D120B1F68C8BE007FEDBD /* helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		F81D120D1F68CF29007FEDBD /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			children = (
 				F81D12021F6821D8007FEDBD /* Post.swift */,
 				F81D12081F682696007FEDBD /* User.swift */,
+				F81D120D1F68CF29007FEDBD /* Contact.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 		F81D12051F68235F007FEDBD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F81D120B1F68C8BE007FEDBD /* helper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -314,6 +320,8 @@
 				1712F7F51F67DD3200FE0C01 /* PictureCollectionViewCell.swift in Sources */,
 				C017A8E51F668AAB00EBF81F /* LoginViewController.swift in Sources */,
 				1712F7C71F67896400FE0C01 /* editProfileViewController.swift in Sources */,
+				F81D120C1F68C8BE007FEDBD /* helper.swift in Sources */,
+				F81D120E1F68CF29007FEDBD /* Contact.swift in Sources */,
 				1712F7F31F67DCF900FE0C01 /* ProfileCollectionViewCell.swift in Sources */,
 				F81D12031F6821D8007FEDBD /* Post.swift in Sources */,
 				C06677631F67E5BF002672FD /* UploadPhotoViewController.swift in Sources */,
