@@ -29,6 +29,22 @@ class Post {
     var likeCount: Int?
     var likes: Dictionary<String, Any>?
     var isLiked: Bool?
+    var username : String?
+    
+    init() {}
+    
+    init(aCaption : String, aPhotoURL : String, anUid : String, anId : String, aLikeCount : Int, aLikes : Dictionary<String, Any>?, anIsLiked : Bool, anUsername : String){
+        
+        caption = aCaption
+        photoURL = aPhotoURL
+        uid = anUid
+        id = anId
+        likeCount = aLikeCount
+        likes = aLikes
+        isLiked = anIsLiked
+        username = anUsername
+        
+    }
 }
 
 extension Post {

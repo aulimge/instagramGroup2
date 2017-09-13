@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 
 class ViewController: UIViewController {
@@ -16,7 +17,8 @@ class ViewController: UIViewController {
     var userName : String = ""
     
     var posts : [Post] = []
-
+    var ref: DatabaseReference!
+    
     
     
     @IBOutlet weak var tableView: UITableView!{
@@ -42,12 +44,108 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    func fetchPost() {
+        ref = Database.database().reference()
+        
+        //observe child added works as a loop return each child individually
+        ref.child("Posts").observe(.childAdded, with: { (snapshot) in
+            guard let info = snapshot.value as? [String : Any]
+                else { return }
+            print("info: \(info)")
+            print(snapshot)
+            print(snapshot.key)
+            
+            //cast snapshot.value to correct Datatype
+            
+            if let caption = info["caption"] as? String,
+                let photoURL = info["photoURL"] as? String,
+                let uid = info["uid"] as? String,
+                let id = info["id"] as? String,
+                let likeCount = info["likeCount"] as? Int,
+                let likes = info["likes"] as? Dictionary<String, Any>?,
+            let isLiked = info["isLike"] as? Bool,
+            let username = info["username"] as? String{
+                
+                
+                
+                //create new contact object
+                let newPost = Post(aCaption: caption, aPhotoURL: photoURL, anUid: uid, anId: id, aLikeCount: likeCount, aLikes: likes, anIsLiked: isLiked, anUsername: username)
+                print(newPost)
+                
+                //append to contact array
+                self.posts.append(newPost)
+                
+                
+                //this is more efficient
+                //insert indv rows as we retrive idv items
+                let  index = self.posts.count - 1
+                let indexPath = IndexPath(row: index, section: 0)
+                self.tableView.insertRows(at: [indexPath], with: .right)
+            }
+            
+        })
+        
+        ref.child("Posts").observe(.value, with: { (snapshot) in
+            guard let info = snapshot.value as? [String : Any]
+                else { return }
+            
+            print (info)
+        })
+        
+        ref.child("Posts").observe(.childRemoved, with: { (snapshot) in
+            guard let info = snapshot.value as? [String : Any ] else { return }
+            
+            let deletedID = snapshot.key
+            
+            
+            //filters through students returns index(deletedIndex) where Boolean condition is fulfilled
+            if let deletedIndex = self.posts.index(where: { (student) -> Bool in
+                return student.id == deletedID
+            }) {
+                //remove student when deletedIndex is found
+                self.posts.remove(at: deletedIndex)
+                let index = self.posts.count - 1
+                let indexPath = IndexPath(row: deletedIndex, section: 0)
+                
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        })
+        
+        ref.child("Posts").observe(.childChanged, with: { (snapshot) in
+            guard let info = snapshot.value as? [String:Any] else {return}
+            
+            guard let caption = info["caption"] as? String,
+                let photoURL = info["photoURL"] as? String,
+                let uid = info["uid"] as? String,
+                let id = info["id"] as? String,
+                let likeCount = info["likeCount"] as? Int,
+                let likes = info["likes"] as? Dictionary<String, Any>?,
+                let isLiked = info["isLike"] as? Bool,
+                let username = info["username"] as? String else {return}
+            
+            if let matchedIndex = self.posts.index(where: { (post) -> Bool in
+                return post.id == snapshot.key
+            }) {
+                let changedPost = self.posts[matchedIndex]
+                changedPost.caption = caption
+                changedPost.photoURL = photoURL
+                changedPost.uid = uid
+                changedPost.id = id
+                changedPost.likeCount = likeCount
+                changedPost.likes = likes
+                changedPost.isLiked = isLiked
+                changedPost.username = username
+                
+                let indexPath = IndexPath(row: matchedIndex, section: 0)
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        })
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
+        fetchPost()
         
         
     }
