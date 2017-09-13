@@ -12,6 +12,13 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
     
+    var userId : String = ""
+    var userName : String = ""
+    
+    var posts : [Post] = []
+
+    
+    
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             tableView.dataSource = self
@@ -39,18 +46,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-           }
+        
+        
+        
+        
+    }
     
     
 }
 
 extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath)
+        
+        //Read all the post here
+        
         
         //setup
         //cell.textLabel?.text = "\(indexPath.row )"

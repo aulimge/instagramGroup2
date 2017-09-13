@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -18,8 +19,13 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
     let picker = UIImagePickerController()
     var profilePicURL : String = ""
     
+    var userId : String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       // userId = (Auth().currentUser?.uid)!
+      //  print(userId)
         
         picker.delegate = self
     }
@@ -52,7 +58,7 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
         
     }
     
-    @IBAction func saveButton(_ sender: AnyObject) {
+@IBAction func saveButton(_ sender: AnyObject) {
         
         let alert = UIAlertController(title: title, message:"", preferredStyle: .alert)
         let action = UIAlertAction(title: "Image Uploaded", style: .default, handler: nil)
@@ -60,8 +66,27 @@ class UploadPhotoViewController: UIViewController, UIImagePickerControllerDelega
         
         present(alert, animated: true, completion:  nil)
 
+       //save the ImageURL to posts
+        ref = Database.database().reference()
+        guard let id = selectedContact?.id,
+            let name = "AAA"//nameTextField.text,
+            //let image = profileImageView.image
+            else {return}
         
-            }
+        let post : [String : Any] = ["name" : name, "imageURL" : self.profilePicURL]
+        
+        //dig paths to reach a specific student
+  //      ref.child("students").child(id).updateChildValues(post)
+//        editButton.setTitle("Edit", for: .normal)
+//        idEdit = true
+//        nameTextField.isUserInteractionEnabled = false
+//        ageTextField.isUserInteractionEnabled = false
+
+    
+    
+    
+    
+} //saveButton
     
     
     func noCamera(){

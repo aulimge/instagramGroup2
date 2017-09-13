@@ -16,6 +16,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var fbloginID : String = ""
     
+    //Define private var for this module
+    var g_userId : String = ""
+    var g_userName : String = ""
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBtnTapped: UIButton!{
@@ -147,6 +151,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.present(vc, animated:  true, completion:  nil)
                 
                 
+                //assign the var to pass
+                self.g_userId = self.fbloginID
+                self.g_userName = name
+                
             }
             
             print(result ?? "")
@@ -179,6 +187,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             if let validUser = user {
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
                 
+                //if let Auth().currentUser?.uid = user
+
+               // g_userId = Auth().currentUser?.uid
+               // g_userName = ""
+                
                 self.present(vc, animated:  true, completion:  nil)
                 
             }
@@ -196,9 +209,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
 
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+
+            guard let destination = segue.destination as?
+                ViewController
+                else {return}
+            
+            destination.userId = g_userId
+            destination.userName = g_userName
+        
+        
+        
+    }
 
 }
+
 
 
 
