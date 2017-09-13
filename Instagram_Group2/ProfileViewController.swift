@@ -12,7 +12,7 @@ import FirebaseStorage
 
 class ProfileViewController: UIViewController {
 
-    var selectedContact : User?
+    var selectedContact : Contact?
     var ref : DatabaseReference!
     var idEdit : Bool = true
     

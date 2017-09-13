@@ -34,7 +34,8 @@ class searchViewController: UIViewController {
     
     
     @IBAction func cancelButton(_ sender: Any) {
-        
+        searchTextField.text = ""
+        fetchContacts()
     }
     
     func fetchContacts() {
