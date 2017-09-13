@@ -13,9 +13,6 @@ import FirebaseDatabase
 
 class ViewController: UIViewController {
     
-    var userId : String = ""
-    var userName : String = ""
-    
     var posts : [Post] = []
     var ref: DatabaseReference!
     
@@ -97,17 +94,17 @@ class ViewController: UIViewController {
         
         ref.child("Posts").observe(.childRemoved, with: { (snapshot) in
             guard let info = snapshot.value as? [String : Any ] else { return }
+            print(info)
             
             let deletedID = snapshot.key
             
             
-            //filters through students returns index(deletedIndex) where Boolean condition is fulfilled
+            //filters through post returns index(deletedIndex) where Boolean condition is fulfilled
             if let deletedIndex = self.posts.index(where: { (student) -> Bool in
                 return student.id == deletedID
             }) {
-                //remove student when deletedIndex is found
+                //remove post when deletedIndex is found
                 self.posts.remove(at: deletedIndex)
-                let index = self.posts.count - 1
                 let indexPath = IndexPath(row: deletedIndex, section: 0)
                 
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
@@ -147,12 +144,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        g_userId = userId
-        g_userName = userName
-        
-        
+              
         fetchPost()
         
         

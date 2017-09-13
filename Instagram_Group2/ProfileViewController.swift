@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     var idEdit : Bool = true
     var posts: [Post] = []
     var profilePicURL : String = ""
+    
     var userId : String = ""
     var userName : String = ""
     
@@ -26,16 +27,16 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        userId = "fX02GOg2AlRF4PBn1fyFXQDdqvs1"
-        userName  = "max"
-        
+   
         collectionVIew.dataSource = self
         collectionVIew.delegate = self
         
+        //Get User Id
         ref = Database.database().reference()
-        
         guard let uid = Auth.auth().currentUser?.uid else {return}
+        userId = uid
+        
+         userName = "max"
 
         ref.child("Posts").child(uid).observe(.value, with: { (snapshot) in
             
@@ -44,11 +45,11 @@ class ProfileViewController: UIViewController {
             if let caption = info["caption"] as? String,
                 let imageURL = info["imageURL"] as? String,
                 let imageFileName = info["imageFileName"] as? String,
-                let isLiked = info["isLiked"] as? Bool,
+                let id = info["id"] as? String,
                 let likeCount = info["likeCount"] as? Int,
-                let likes = info["likes"] as? String
-                
-                
+                let isLiked = info["isLiked"] as? Bool,
+                let username = info["username"] as? String
+            
             {
                 
           
