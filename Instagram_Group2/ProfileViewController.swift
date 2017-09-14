@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
         fetchHeader()
         //self.collectionVIew.reloadData()
         
-        self.title = userName
+        self.title = "audrey"   //userName
 
         
     }

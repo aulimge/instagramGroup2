@@ -9,12 +9,16 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 
 class EditProfileViewController: UIViewController {
 
     var selectedContact: Contact?
     var ref: DatabaseReference!
     var imageUrl: String = ""
+    
+    var userId : String = ""
+
    
     @IBOutlet weak var editBtnTapped: UIButton!{
         didSet {
@@ -58,6 +62,9 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ref = Database.database().reference()
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        userId = uid
        
     }
 
