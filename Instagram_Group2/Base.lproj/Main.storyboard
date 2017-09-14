@@ -905,14 +905,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="ageTextField" destination="Nsg-o0-iKX" id="B2g-VN-0NU"/>
                         <outlet property="editBtnTapped" destination="Gox-7A-f3t" id="gaR-Dk-UrO"/>
-                        <outlet property="editButton" destination="Gox-7A-f3t" id="b6R-at-dhW"/>
                         <outlet property="firstNameTextField" destination="lUX-2b-MHX" id="gWE-lT-Pjm"/>
                         <outlet property="imageView" destination="1ox-GJ-Q8L" id="h7J-im-17W"/>
                         <outlet property="lastNameTextField" destination="Nsg-o0-iKX" id="s3y-Ha-NhT"/>
-                        <outlet property="nameTextField" destination="MqR-iJ-p6W" id="M1b-yv-37k"/>
-                        <outlet property="uploadPhotoBtnTapped" destination="MpX-bq-h6X" id="adK-eb-kSW"/>
                         <outlet property="usernameTextField" destination="MqR-iJ-p6W" id="Oy9-NR-1bl"/>
                     </connections>
                 </viewController>

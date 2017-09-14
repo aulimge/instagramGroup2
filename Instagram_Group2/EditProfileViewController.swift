@@ -29,13 +29,12 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func uploadPhotoBtnTapped(_ sender: Any) {
-//        let alertVC = UIAlertController(title: "Wow", message: "You have successful updated the image", preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alertVC.addAction(okAction)
-//        present(alertVC, animated: true, completion: nil)
- updateProfilePicEnable()
+
+         updateProfilePicEnable()
         
     }
+    
+    
     @IBOutlet weak var usernameTextField: UITextField!{
         didSet {
             usernameTextField.isUserInteractionEnabled = false //keyboard will not come out when the user tappes on the keyboard
@@ -55,9 +54,7 @@ class EditProfileViewController: UIViewController {
         }
 
     }
-    
-    
-    
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +111,9 @@ class EditProfileViewController: UIViewController {
             lastNameTextField.isUserInteractionEnabled = false
             
             ref = Database.database().reference()
-            
+            //dig path to the user
+            ref.child("Users").child(userId).updateChildValues(post)
+
             //get the id of the specific user
             guard let username = selectedContact?.username,
                 let firstname = firstNameTextField.text,
@@ -123,8 +122,6 @@ class EditProfileViewController: UIViewController {
             
             let post : [String:Any] = ["firstName": firstname, "lastName":lastname, "imageURL": imageUrl]
             
-            //dig path to the user
-            ref.child("Users").child(username).updateChildValues(post)
             
             //
             
