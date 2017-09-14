@@ -36,40 +36,50 @@ class ProfileViewController: UIViewController {
         
         fetchPost()
         fetchHeader()
-        self.collectionVIew.reloadData()
+        //self.collectionVIew.reloadData()
+        
+        self.title = userName
+
         
     }
     
     func fetchHeader() {
         //Get User Id
         ref = Database.database().reference()
-     //   guard let uid = Auth.auth().currentUser?.uid else {return}
-    //   userId = uid
-        
-        ref.child("Users").child(userId ).observe(.value, with: { (snapshot) in
+        //guard let uid = Auth.auth().currentUser?.uid else {return}
+        //userId = uid
+        //ref.child("Users").queryOrdered(byChild: "id").queryEqual(toValue: userId).observe(.value, with: { (snapshot) in
+            
+            
+            
+        ref.child("Users").child(userId).observe(.value, with: { (snapshot) in
             
             guard let info = snapshot.value as? [String: Any] else {return}
             
             //cast snapshot.value to correct Datatype
-            if let username = info["name"] as? String,
+            if let p_username = info["name"] as? String,
                 let firstname = info["firstName"] as? String,
                 let lastname = info["lastName"] as? String,
-                //let email = info["email"] as? String,
+                let email = info["email"] as? String,
                 let imageURL = info["imageURL"] as? String,
                 let filename = info["imageFilename"] as? String {
                 
                 
                 let fullname =  "\(firstname) \(lastname)"
                 //create new contact object
-                let newContact = Contact(anID: snapshot.key, aUsername: username, aFullname: fullname, anEmail: "", anImageURL: imageURL, anFilename: filename)
+                let newContact = Contact(anID: snapshot.key, aUsername: p_username, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: filename)
                 
                 print(newContact)
                 
                 //append to contact array
                 self.contacts.append(newContact)
-    
-            
-           // self.collectionVIew.reloadData()
+                
+                //self.collectionVIew.reloadData()
+                //insert indv rows as we retrive idv items
+                
+                let  index = self.contacts.count - 1
+                let indexPath = IndexPath(row: index, section: 0)
+                self.collectionVIew.insertItems(at: [indexPath])
             
             }
             
@@ -84,15 +94,15 @@ class ProfileViewController: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         userId = uid
         
-        userName = "max"
+ 
         
-        ref.child("Posts").child(uid).observe(.value, with: { (snapshot) in
+        ref.child("Posts").observe(.childAdded, with: { (snapshot) in
             
             guard let info = snapshot.value as? [String: Any] else {return}
             
             if let caption = info["caption"] as? String,
                 let imageURL = info["imageURL"] as? String,
-                let imageFileName = info["imageFileName"] as? String,
+                let imageFileName = info["imageFilename"] as? String,
                 let id = info["id"] as? String,
                 let likeCount = info["likeCount"] as? Int,
                 let isLiked = info["isLiked"] as? Bool,
@@ -107,10 +117,17 @@ class ProfileViewController: UIViewController {
                 
                 self.posts.append(newPost)
                 print(snapshot.value)
+                let  index = self.posts.count - 1
+                let indexPath = IndexPath(row: index, section: 1)
+                self.collectionVIew.insertItems(at: [indexPath])
+                
+              //  let  index1 = self.contacts.count - 1
+              //  let indexPath1 = IndexPath(row: index1, section: 0)
+              //  self.collectionVIew.reloadItems(at: [indexPath1])
                 
             }
             
-            self.collectionVIew.reloadData()
+            //self.collectionVIew.reloadData()
             
             
             
@@ -129,7 +146,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return contacts.count
         }
         return posts.count
     }
@@ -139,25 +156,32 @@ extension ProfileViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             let headerViewCell = collectionVIew.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCollectionViewCell
             
-            headerViewCell.labelUser.text = selectedContact?.fullname
+            headerViewCell.labelUser.text = contacts[indexPath.row].username     //selectedContact?.fullname
             
-            if let imageurl = selectedContact?.imageURL {
+            let imageURL = contacts[indexPath.row].imageURL
+            headerViewCell.profileImageView.loadImage(from: imageURL)
             
-            headerViewCell.profileImageView.sd_setImage(with: URL(string: imageurl))
+            
+            
+           // if let imageurl = selectedContact?.imageURL {
+            
+            //headerViewCell.profileImageView.sd_setImage(with: URL(string: imageurl))
             headerViewCell.labelPost.text = String(posts.count)
 
-                
-                
-            }
+            //}
             
             return headerViewCell
 
         } else {
         
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCollectionCell", for: indexPath) as! PictureCollectionViewCell
-        //   cell.post = posts[indexPath.row].caption
+            cell.post = posts[indexPath.row]
             
-            cell.backgroundColor = UIColor.red
+            //let imageURL = contacts[indexPath.row].imageURL
+            //headerViewCell.profileImageView.loadImage(from: imageURL)
+
+            
+            //cell.backgroundColor = UIColor.red
             return cell
         }
     }
