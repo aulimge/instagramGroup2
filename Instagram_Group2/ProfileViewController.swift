@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     var ref : DatabaseReference!
     var idEdit : Bool = true
     var posts: [Post] = []
+    var contacts : [Contact] = []
     var profilePicURL : String = ""
     
     var totalpost = 0
@@ -33,13 +34,58 @@ class ProfileViewController: UIViewController {
         collectionVIew.dataSource = self
         collectionVIew.delegate = self
         
+        fetchPost()
+        fetchHeader()
+        self.collectionVIew.reloadData()
+        
+    }
+    
+    func fetchHeader() {
+        //Get User Id
+        ref = Database.database().reference()
+     //   guard let uid = Auth.auth().currentUser?.uid else {return}
+    //   userId = uid
+        
+        ref.child("Users").child(userId ).observe(.value, with: { (snapshot) in
+            
+            guard let info = snapshot.value as? [String: Any] else {return}
+            
+            //cast snapshot.value to correct Datatype
+            if let username = info["name"] as? String,
+                let firstname = info["firstName"] as? String,
+                let lastname = info["lastName"] as? String,
+                //let email = info["email"] as? String,
+                let imageURL = info["imageURL"] as? String,
+                let filename = info["imageFilename"] as? String {
+                
+                
+                let fullname =  "\(firstname) \(lastname)"
+                //create new contact object
+                let newContact = Contact(anID: snapshot.key, aUsername: username, aFullname: fullname, anEmail: "", anImageURL: imageURL, anFilename: filename)
+                
+                print(newContact)
+                
+                //append to contact array
+                self.contacts.append(newContact)
+    
+            
+           // self.collectionVIew.reloadData()
+            
+            }
+            
+        })
+
+    }
+    
+    
+    func fetchPost() {
         //Get User Id
         ref = Database.database().reference()
         guard let uid = Auth.auth().currentUser?.uid else {return}
         userId = uid
         
-         userName = "max"
-
+        userName = "max"
+        
         ref.child("Posts").child(uid).observe(.value, with: { (snapshot) in
             
             guard let info = snapshot.value as? [String: Any] else {return}
@@ -51,7 +97,7 @@ class ProfileViewController: UIViewController {
                 let likeCount = info["likeCount"] as? Int,
                 let isLiked = info["isLiked"] as? Bool,
                 let p_username = info["username"] as? String
-            
+                
             {
                 
                 let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFileName, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: p_username)
@@ -65,12 +111,13 @@ class ProfileViewController: UIViewController {
             }
             
             self.collectionVIew.reloadData()
-
+            
             
             
         })
-  
-    }
+ 
+    } //end FetchData
+    
     
 } // end ProfileViewController
 
