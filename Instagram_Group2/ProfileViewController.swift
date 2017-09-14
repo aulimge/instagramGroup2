@@ -71,6 +71,8 @@ class ProfileViewController: UIViewController {
                 
                 print(newContact)
                 
+                
+                self.userName = p_username
                 //append to contact array
                 self.contacts.append(newContact)
                 
