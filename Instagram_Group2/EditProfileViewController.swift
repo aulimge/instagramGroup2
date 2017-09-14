@@ -62,7 +62,20 @@ class EditProfileViewController: UIViewController {
         ref = Database.database().reference()
         guard let uid = Auth.auth().currentUser?.uid else {return}
         userId = uid
-       
+        
+        guard let username = selectedContact?.username,
+            let firstname = selectedContact?.fullname,
+            let lastname = selectedContact?.fullname,
+            let imageURL = selectedContact?.imageURL
+            else {return}
+        
+        usernameTextField.text = username
+        firstNameTextField.text = firstname
+        lastNameTextField.text = lastname
+      
+        imageView.loadImage(from: imageURL)
+
+        
     }
 
     func loadImage(urlString: String) {
@@ -111,17 +124,18 @@ class EditProfileViewController: UIViewController {
             lastNameTextField.isUserInteractionEnabled = false
             
             ref = Database.database().reference()
-            //dig path to the user
-            ref.child("Users").child(userId).updateChildValues(post)
-
+           
             //get the id of the specific user
-            guard let username = selectedContact?.username,
+            guard let username = usernameTextField.text,
                 let firstname = firstNameTextField.text,
                 let lastname = lastNameTextField.text
                 else {return}
             
             let post : [String:Any] = ["firstName": firstname, "lastName":lastname, "imageURL": imageUrl]
             
+            //dig path to the user
+            ref.child("Users").child(userId).updateChildValues(post)
+
             
             //
             

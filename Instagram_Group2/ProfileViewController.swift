@@ -188,14 +188,6 @@ extension ProfileViewController: UICollectionViewDataSource {
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let headerViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCollectionViewCell
-//        
-//        headerViewCell.labelUser.text = selectedContact?.fullname
-//        
-//        return headerViewCell
-//    }
-    
 }
 
 
