@@ -116,13 +116,13 @@ class ProfileViewController: UIViewController {
                 print(newPost)
                 
                 
-                
-                self.posts.append(newPost)
-                print(snapshot.value)
-                let  index = self.posts.count - 1
-                let indexPath = IndexPath(row: index, section: 1)
-                self.collectionVIew.insertItems(at: [indexPath])
-                
+                if imageURL != "" {
+                    self.posts.append(newPost)
+                    print(snapshot.value)
+                    let  index = self.posts.count - 1
+                    let indexPath = IndexPath(row: index, section: 1)
+                    self.collectionVIew.insertItems(at: [indexPath])
+                }
               //  let  index1 = self.contacts.count - 1
               //  let indexPath1 = IndexPath(row: index1, section: 0)
               //  self.collectionVIew.reloadItems(at: [indexPath1])
