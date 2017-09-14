@@ -259,7 +259,7 @@
                                                             <rect key="frame" x="8" y="62" width="252" height="30"/>
                                                             <state key="normal" title="Edit"/>
                                                             <connections>
-                                                                <segue destination="dM0-rC-7VG" kind="show" id="m9b-Ri-p9m"/>
+                                                                <action selector="editBtnTapped:" destination="cMu-oh-gno" eventType="touchUpInside" id="Uuo-Fw-fhE"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -897,9 +897,6 @@
                                 <rect key="frame" x="305" y="92" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="controlBtnTapped:" destination="dM0-rC-7VG" eventType="touchUpInside" id="YRo-WB-gD0"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

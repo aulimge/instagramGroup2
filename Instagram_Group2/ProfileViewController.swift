@@ -27,6 +27,17 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var collectionVIew: UICollectionView!
     
+    @IBAction func editBtnTapped(_ sender: Any) {
+        
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let destination = mainStoryBoard.instantiateViewController(withIdentifier: "EditProfileViewController") as?
+            EditProfileViewController else {return}
+        
+        destination.selectedContact = selectedContact
+        
+        navigationController?.pushViewController(destination, animated: true)
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +79,9 @@ class ProfileViewController: UIViewController {
                 let fullname =  "\(firstname) \(lastname)"
                 //create new contact object
                 let newContact = Contact(anID: snapshot.key, aUsername: p_username, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: filename)
+               
+                //pass the var
+                self.selectedContact = newContact
                 
                 print(newContact)
                 
