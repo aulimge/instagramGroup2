@@ -142,7 +142,7 @@
                         <segue destination="Tkk-47-6JW" kind="relationship" relationship="viewControllers" id="Zy0-N2-Yhc"/>
                         <segue destination="r9d-mf-MWm" kind="relationship" relationship="viewControllers" id="LiZ-at-vHQ"/>
                         <segue destination="7eu-tc-gX7" kind="relationship" relationship="viewControllers" id="I8G-cX-ZYc"/>
-                        <segue destination="cMu-oh-gno" kind="relationship" relationship="viewControllers" id="pyZ-TC-8ZW"/>
+                        <segue destination="lL3-u4-JRu" kind="relationship" relationship="viewControllers" id="pyZ-TC-8ZW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxU-bm-4AY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XW2-XL-ma6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3FB-yb-cMJ">
                                     <size key="itemSize" width="325" height="247"/>
@@ -251,7 +251,7 @@
                                                             <rect key="frame" x="8" y="62" width="252" height="30"/>
                                                             <state key="normal" title="Edit"/>
                                                             <connections>
-                                                                <segue destination="m71-Zr-hVK" kind="show" id="Qic-jC-AEH"/>
+                                                                <segue destination="dM0-rC-7VG" kind="show" id="m9b-Ri-p9m"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -330,14 +330,14 @@
                             <constraint firstAttribute="trailing" secondItem="XW2-XL-ma6" secondAttribute="trailing" id="n7m-qw-TDT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-user_filled" selectedImage="icons8-user_filled" id="fg0-Qr-7oL"/>
+                    <navigationItem key="navigationItem" id="sz3-cj-Qrr"/>
                     <connections>
                         <outlet property="collectionVIew" destination="XW2-XL-ma6" id="yqY-T8-dxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cd-Na-UDW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4392.8000000000002" y="911.69415292353835"/>
+            <point key="canvasLocation" x="5332" y="911.69415292353835"/>
         </scene>
         <!--Upload Photo View Controller-->
         <scene sceneID="rrM-G4-drk">
@@ -395,24 +395,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czF-uU-gPE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4780" y="1775.2623688155923"/>
-        </scene>
-        <!--Edit Profile View Controller-->
-        <scene sceneID="2FH-0q-yOC">
-            <objects>
-                <viewController storyboardIdentifier="editProfileViewController" id="m71-Zr-hVK" customClass="editProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gHs-xB-SVz"/>
-                        <viewControllerLayoutGuide type="bottom" id="cGw-Za-dRD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ygU-Tv-moN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="63x-z6-Etp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5574" y="912"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="M8R-9I-MsU">
@@ -857,6 +839,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5b-pH-qrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5574" y="132"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="MJ5-PO-0KS">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileViewController" id="dM0-rC-7VG" customClass="EditProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jDM-T1-da3"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Wg-HL-rIq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fp7-YL-EAG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MqR-iJ-p6W">
+                                <rect key="frame" x="91" y="400" width="194" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nsg-o0-iKX">
+                                <rect key="frame" x="91" y="493" width="194" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ox-GJ-Q8L">
+                                <rect key="frame" x="67" y="151" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lUX-2b-MHX">
+                                <rect key="frame" x="90" y="447" width="194" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MpX-bq-h6X">
+                                <rect key="frame" x="118" y="318" width="139" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Upload Photo"/>
+                                <connections>
+                                    <action selector="uploadPhotoBtnTapped:" destination="dM0-rC-7VG" eventType="touchUpInside" id="ZkU-zB-YTa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gox-7A-f3t">
+                                <rect key="frame" x="305" y="92" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="controlBtnTapped:" destination="dM0-rC-7VG" eventType="touchUpInside" id="YRo-WB-gD0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="ageTextField" destination="Nsg-o0-iKX" id="B2g-VN-0NU"/>
+                        <outlet property="editButton" destination="Gox-7A-f3t" id="b6R-at-dhW"/>
+                        <outlet property="firstNameTextField" destination="lUX-2b-MHX" id="gWE-lT-Pjm"/>
+                        <outlet property="imageView" destination="1ox-GJ-Q8L" id="h7J-im-17W"/>
+                        <outlet property="lastNameTextField" destination="Nsg-o0-iKX" id="s3y-Ha-NhT"/>
+                        <outlet property="nameTextField" destination="MqR-iJ-p6W" id="M1b-yv-37k"/>
+                        <outlet property="uploadPhotoBtnTapped" destination="MpX-bq-h6X" id="adK-eb-kSW"/>
+                        <outlet property="usernameTextField" destination="MqR-iJ-p6W" id="Oy9-NR-1bl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHs-MJ-6Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6362" y="912"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eB2-JO-GDL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lL3-u4-JRu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="icons8-user_filled" selectedImage="icons8-user_filled" id="fg0-Qr-7oL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k0p-iX-GaO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cMu-oh-gno" kind="relationship" relationship="rootViewController" id="acK-Jb-uHr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="497-8l-bDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4392.8000000000002" y="911.69415292353835"/>
         </scene>
     </scenes>
     <resources>
