@@ -416,31 +416,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wpi-0g-CpS">
-                                <rect key="frame" x="4" y="72" width="375" height="30"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xFR-oz-UKQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="306" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTJ-10-B57">
-                                        <rect key="frame" x="316" y="0.0" width="59" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="59" id="tKT-Cq-TUa"/>
-                                        </constraints>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelButton:" destination="r9d-mf-MWm" eventType="touchUpInside" id="K6r-ez-JoX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ije-BY-y8b"/>
-                                </constraints>
-                            </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mzj-ft-ZO4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mzj-ft-ZO4">
                                 <rect key="frame" x="0.0" y="117" width="375" height="501"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -479,21 +455,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="08f-ma-qV3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mzj-ft-ZO4" firstAttribute="leading" secondItem="0Ax-eZ-XVJ" secondAttribute="leading" id="9iE-JX-qHf"/>
-                            <constraint firstItem="Wpi-0g-CpS" firstAttribute="top" secondItem="h8P-To-1SQ" secondAttribute="bottom" constant="52" id="Gnh-Xc-tt8"/>
                             <constraint firstAttribute="trailing" secondItem="mzj-ft-ZO4" secondAttribute="trailing" id="JIH-1g-y21"/>
-                            <constraint firstAttribute="trailing" secondItem="Wpi-0g-CpS" secondAttribute="trailing" id="KyL-gU-SJU"/>
-                            <constraint firstItem="mzj-ft-ZO4" firstAttribute="top" secondItem="Wpi-0g-CpS" secondAttribute="bottom" constant="15" id="PfF-Y6-adb"/>
                             <constraint firstItem="imQ-Zb-eIC" firstAttribute="top" secondItem="mzj-ft-ZO4" secondAttribute="bottom" id="h90-z0-3Xp"/>
-                            <constraint firstItem="Wpi-0g-CpS" firstAttribute="leading" secondItem="0Ax-eZ-XVJ" secondAttribute="leading" id="rg5-m9-DBZ"/>
+                            <constraint firstAttribute="trailing" secondItem="08f-ma-qV3" secondAttribute="trailing" id="jCt-sz-rlp"/>
+                            <constraint firstItem="08f-ma-qV3" firstAttribute="top" secondItem="h8P-To-1SQ" secondAttribute="bottom" id="kuZ-Tn-JDl"/>
+                            <constraint firstItem="08f-ma-qV3" firstAttribute="leading" secondItem="0Ax-eZ-XVJ" secondAttribute="leading" id="n2J-fw-Kfm"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" image="icons8-search" selectedImage="icons8-search" id="DT3-Yy-ICe"/>
                     <connections>
-                        <outlet property="searchTextField" destination="xFR-oz-UKQ" id="XdJ-Q6-L69"/>
+                        <outlet property="searchBar" destination="08f-ma-qV3" id="xe8-nM-9Nl"/>
                         <outlet property="tableView" destination="mzj-ft-ZO4" id="hWh-Lo-F9S"/>
                     </connections>
                 </viewController>
@@ -506,7 +485,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rHV-Yi-leg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ryf-Pd-NSD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ryf-Pd-NSD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

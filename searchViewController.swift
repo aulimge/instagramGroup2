@@ -15,7 +15,10 @@ class searchViewController: UIViewController {
     var ref : DatabaseReference!
     var contacts : [Contact] = []
     
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
+   // @IBOutlet weak var searchTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView! {
         didSet{
@@ -33,11 +36,11 @@ class searchViewController: UIViewController {
     }
     
     
-    @IBAction func cancelButton(_ sender: Any) {
-        searchTextField.text = ""
-        
-        fetchContacts()
-    }
+//    @IBAction func cancelButton(_ sender: Any) {
+//        searchTextField.text = ""
+//        
+//        fetchContacts()
+//    }
     
     func fetchContacts() {
         
