@@ -416,8 +416,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mzj-ft-ZO4">
-                                <rect key="frame" x="0.0" y="117" width="375" height="501"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mzj-ft-ZO4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="72" id="qUT-U1-KXH" customClass="SearchTableViewCell" customModule="Instagram_Group2" customModuleProvider="target">
@@ -463,6 +463,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mzj-ft-ZO4" firstAttribute="leading" secondItem="0Ax-eZ-XVJ" secondAttribute="leading" id="9iE-JX-qHf"/>
+                            <constraint firstItem="mzj-ft-ZO4" firstAttribute="top" secondItem="08f-ma-qV3" secondAttribute="bottom" id="BQc-Z5-xmy"/>
                             <constraint firstAttribute="trailing" secondItem="mzj-ft-ZO4" secondAttribute="trailing" id="JIH-1g-y21"/>
                             <constraint firstItem="imQ-Zb-eIC" firstAttribute="top" secondItem="mzj-ft-ZO4" secondAttribute="bottom" id="h90-z0-3Xp"/>
                             <constraint firstAttribute="trailing" secondItem="08f-ma-qV3" secondAttribute="trailing" id="jCt-sz-rlp"/>
@@ -485,7 +486,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rHV-Yi-leg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ryf-Pd-NSD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ryf-Pd-NSD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

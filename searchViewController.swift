@@ -75,20 +75,24 @@ class searchViewController: UIViewController {
                 
                 //this is more efficient
                 //insert indv rows as we retrive idv items
-                let  index = self.contacts.count - 1
-                let indexPath = IndexPath(row: index, section: 0)
-                self.tableView.insertRows(at: [indexPath], with: .right)
+                
+                DispatchQueue.main.async {
+                    let  index = self.contacts.count - 1
+                    let indexPath = IndexPath(row: index, section: 0)
+                    
+                    self.tableView.insertRows(at: [indexPath], with: .right)
+                }
                 
                 
             }
         })
         
-        ref.child("Users").observe(.value, with: {
-            (snapshot) in
-            guard let info = snapshot.value as? [String : Any]
-                else {return}
-            print(info)
-        })
+//        ref.child("Users").observe(.value, with: {
+//            (snapshot) in
+//            guard let info = snapshot.value as? [String : Any]
+//                else {return}
+//            print(info)
+//        })
         
 
         
