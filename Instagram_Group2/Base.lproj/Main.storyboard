@@ -274,7 +274,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMB-vp-ScP">
-                                                    <rect key="frame" x="8" y="129" width="86" height="20.5"/>
+                                                    <rect key="frame" x="8" y="94" width="86" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="Mgd-Hz-W0P"/>
                                                     </constraints>
@@ -291,7 +291,7 @@
                                             <constraint firstItem="BRL-oZ-kaf" firstAttribute="top" secondItem="JWX-Ub-Eew" secondAttribute="topMargin" constant="4" id="5vu-A3-Tp1"/>
                                             <constraint firstItem="lMB-vp-ScP" firstAttribute="leading" secondItem="JWX-Ub-Eew" secondAttribute="leadingMargin" id="SLH-Bd-laY"/>
                                             <constraint firstItem="WpB-yS-mvO" firstAttribute="top" secondItem="JWX-Ub-Eew" secondAttribute="topMargin" id="VUj-d4-wKz"/>
-                                            <constraint firstItem="lMB-vp-ScP" firstAttribute="top" secondItem="BRL-oZ-kaf" secondAttribute="bottom" constant="39" id="fd7-dj-Xw0"/>
+                                            <constraint firstItem="lMB-vp-ScP" firstAttribute="top" secondItem="BRL-oZ-kaf" secondAttribute="bottom" constant="4" id="fd7-dj-Xw0"/>
                                             <constraint firstItem="WpB-yS-mvO" firstAttribute="leading" secondItem="JWX-Ub-Eew" secondAttribute="leading" constant="101" id="v1q-a8-iDR"/>
                                         </constraints>
                                         <size key="customSize" width="389" height="239"/>

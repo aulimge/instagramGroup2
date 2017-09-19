@@ -49,7 +49,9 @@ class ProfileViewController: UIViewController {
         fetchHeader()
         //self.collectionVIew.reloadData()
         
-        self.title = "audrey"   //userName
+        self.title = "\(userName)"
+        
+        //userName
 
         
     }
@@ -185,7 +187,8 @@ extension ProfileViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             let headerViewCell = collectionVIew.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCollectionViewCell
             
-            headerViewCell.labelUser.text = contacts[indexPath.row].username     //selectedContact?.fullname
+            headerViewCell.labelUser.text = selectedContact?.username
+            //contacts[indexPath.row].username
             
             let imageURL = contacts[indexPath.row].imageURL
             headerViewCell.profileImageView.loadImage(from: imageURL)
