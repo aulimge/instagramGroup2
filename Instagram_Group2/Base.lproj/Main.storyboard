@@ -160,7 +160,7 @@
         <!--Profile View Controller-->
         <scene sceneID="y9B-Em-aQY">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="cMu-oh-gno" customClass="ProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" automaticallyAdjustsScrollViewInsets="NO" id="cMu-oh-gno" customClass="ProfileViewController" customModule="Instagram_Group2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z5P-D1-15t"/>
                         <viewControllerLayoutGuide type="bottom" id="NXF-63-rKl"/>

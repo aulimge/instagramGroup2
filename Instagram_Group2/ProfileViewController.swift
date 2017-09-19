@@ -56,6 +56,8 @@ class ProfileViewController: UIViewController {
     
     func fetchHeader() {
         //Get User Id
+        
+        
         ref = Database.database().reference()
         //guard let uid = Auth.auth().currentUser?.uid else {return}
         //userId = uid
@@ -64,6 +66,8 @@ class ProfileViewController: UIViewController {
             
             
         ref.child("Users").child(userId).observe(.value, with: { (snapshot) in
+            
+            //self.contacts.removeAll()
             
             guard let info = snapshot.value as? [String: Any] else {return}
             
@@ -78,7 +82,7 @@ class ProfileViewController: UIViewController {
                 
                 let fullname =  "\(firstname) \(lastname)"
                 //create new contact object
-                let newContact = Contact(anID: snapshot.key, aUsername: p_username, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: filename)
+                let newContact = Contact(anID: snapshot.key, aUsername: p_username, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: filename, aFirstname: firstname, aLastname: lastname)
                
                 //pass the var
                 self.selectedContact = newContact
@@ -88,18 +92,27 @@ class ProfileViewController: UIViewController {
                 
                 self.userName = p_username
                 //append to contact array
+                self.contacts.removeAll()
                 self.contacts.append(newContact)
                 
                 //self.collectionVIew.reloadData()
                 //insert indv rows as we retrive idv items
                 
-                let  index = self.contacts.count - 1
-                let indexPath = IndexPath(row: index, section: 0)
-                self.collectionVIew.insertItems(at: [indexPath])
+                
+                DispatchQueue.main.async {
+//                    let  index = self.contacts.count - 1
+//                    let indexPath = IndexPath(row: index, section: 0)
+//                    self.collectionVIew.insertItems(at: [indexPath])
+                    self.collectionVIew.reloadSections(IndexSet(integer: 0))
+                }
+                //self.collectionVIew.reloadItems(at: [indexPath])
             
             }
             
         })
+        
+        
+
 
     }
     

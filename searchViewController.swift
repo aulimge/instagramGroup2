@@ -57,8 +57,7 @@ class searchViewController: UIViewController, UISearchBarDelegate {
         ref.child("Users").observe(.childAdded, with: { (snapshot) in
             guard let info =  snapshot.value as? [String : Any] else {return}
             print("info : \(info)")
-            print(snapshot)
-            print(snapshot.key)
+           print(snapshot.key)
             
             //cast snapshot.value to correct Datatype
             if let username = info["name"] as? String,
@@ -71,7 +70,7 @@ class searchViewController: UIViewController, UISearchBarDelegate {
                 
                 let fullname =  "\(firstname) \(lastname)"
                 //create new contact object
-                 let newContact = Contact(anID: snapshot.key, aUsername: username, aFullname: fullname, anEmail: "", anImageURL: imageURL, anFilename: filename)
+                 let newContact = Contact(anID: snapshot.key, aUsername: username, aFullname: fullname, anEmail: "", anImageURL: imageURL, anFilename: filename, aFirstname: firstname, aLastname: lastname)
                 
                 print(newContact)
                 

@@ -16,14 +16,18 @@ class Contact {
     var email : String = ""
     var imageURL : String = ""
     var filename : String = ""
+    var firstname : String = ""
+    var lastname : String = ""
     
-    init(anID : String, aUsername : String, aFullname : String, anEmail : String, anImageURL : String, anFilename : String) {
+    init(anID : String, aUsername : String, aFullname : String, anEmail : String, anImageURL : String, anFilename : String, aFirstname : String, aLastname : String  ) {
         id = anID
         username = aUsername
         fullname = aFullname
         email = anEmail
         imageURL = anImageURL
         filename = anFilename
+        firstname = aFirstname
+        lastname = aLastname
     }
     
 }

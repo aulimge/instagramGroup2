@@ -64,8 +64,8 @@ class EditProfileViewController: UIViewController {
         userId = uid
         
         guard let username = selectedContact?.username,
-            let firstname = selectedContact?.fullname,
-            let lastname = selectedContact?.fullname,
+            let firstname = selectedContact?.firstname,
+            let lastname = selectedContact?.lastname,
             let imageURL = selectedContact?.imageURL
             else {return}
         
@@ -124,6 +124,7 @@ class EditProfileViewController: UIViewController {
             lastNameTextField.isUserInteractionEnabled = false
             
             ref = Database.database().reference()
+            
            
             //get the id of the specific user
             guard let username = usernameTextField.text,
@@ -137,7 +138,7 @@ class EditProfileViewController: UIViewController {
             ref.child("Users").child(userId).updateChildValues(post)
 
             
-            //
+                       //
             
             editBtnTapped.setTitle("Edit", for: .normal)
         }
