@@ -10,10 +10,14 @@ import UIKit
 import FirebaseDatabase
 
 
-class searchViewController: UIViewController {
+class searchViewController: UIViewController, UISearchBarDelegate {
 
     var ref : DatabaseReference!
     var contacts : [Contact] = []
+    
+    var searchActive : Bool = false
+    var filtered:[Contact] = []
+   // var data = ["San Francisco","New York","San Jose","Chicago","Los Angeles","Austin","Seattle"]
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -32,6 +36,8 @@ class searchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        searchBar.delegate = self
+        
         fetchContacts()
     }
     
@@ -87,13 +93,6 @@ class searchViewController: UIViewController {
             }
         })
         
-//        ref.child("Users").observe(.value, with: {
-//            (snapshot) in
-//            guard let info = snapshot.value as? [String : Any]
-//                else {return}
-//            print(info)
-//        })
-        
 
         
         ref.child("Users").observe(.childChanged, with: { (snapshot) in
@@ -120,13 +119,50 @@ class searchViewController: UIViewController {
         
         
     } // fetchContacts
+    
+  
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-}
+        
+        //filtered = data.filter({ (text) -> Bool in
+        filtered = contacts.filter({ (contact) -> Bool in
+            let tmp: NSString = contact.username as NSString
+            let range = tmp.range(of: searchText, options: .caseInsensitive)
+            return range.location != NSNotFound
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.tableView.reloadData()
+    }
+
+} // end ViewController
 
 
 
 extension searchViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(searchActive) {
+            return filtered.count
+        }
         return contacts.count
     }
     
@@ -136,16 +172,24 @@ extension searchViewController : UITableViewDataSource {
             SearchTableViewCell
             else { return UITableViewCell() }
         
-        let contact = contacts[indexPath.row]
         
-        cell.usernameLabel.text = contact.username
-        cell.fullnameLabel.text = "\(contact.fullname) Following"
         
-
-        let imageURL = contact.imageURL
-        //cell.profileImageView.image = self.loadImage(from: imageURL)
-        cell.searchImageView.loadImage(from: imageURL)
-        
+        if searchActive {
+            let filter = filtered[indexPath.row]
+            cell.usernameLabel.text = filter.username
+            cell.fullnameLabel.text = "\(filter.fullname) Following"
+            
+            let imageURL = filter.imageURL
+            cell.searchImageView.loadImage(from: imageURL)
+            
+        } else {
+            let contact = contacts[indexPath.row]
+            cell.usernameLabel.text = contact.username
+            cell.fullnameLabel.text = "\(contact.fullname) Following"
+            
+            let imageURL = contact.imageURL
+            cell.searchImageView.loadImage(from: imageURL)
+        }
         
         return cell
         
