@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
         fetchHeader()
         //self.collectionVIew.reloadData()
         
-        self.title = "\(userName)"
+        //self.title = "\(self.selectedContact?.username)"
         
         //userName
 
