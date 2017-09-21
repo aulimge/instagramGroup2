@@ -73,7 +73,7 @@ class EditProfileViewController: UIViewController {
         firstNameTextField.text = firstname
         lastNameTextField.text = lastname
       
-        imageView.loadImage(from: imageURL)
+        imageView.sd_setImage(with: URL(string: imageURL))
 
         
     }

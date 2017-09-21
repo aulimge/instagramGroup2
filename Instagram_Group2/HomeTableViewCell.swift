@@ -22,11 +22,6 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     
-  
-
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

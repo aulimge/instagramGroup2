@@ -142,6 +142,8 @@ class ViewController: UIViewController {
             }
         })
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
               
@@ -169,8 +171,12 @@ extension ViewController : UITableViewDataSource{
         
         //Read all the post here
         cell.nameLabel.text = posts[indexPath.row].username
-        let imageURL = posts[indexPath.row].imageURL
-        cell.postImageView.loadImage(from: imageURL!)
+        if let imageURL = posts[indexPath.row].imageURL
+        {
+            cell.postImageView.sd_setImage(with: URL(string: imageURL), placeholderImage: #imageLiteral(resourceName: "Instagram icon"), options: .progressiveDownload, completed: nil)
+        }else {
+            cell.postImageView.image = #imageLiteral(resourceName: "Instagram icon")
+        }
         
         
         

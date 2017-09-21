@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
+import SDWebImage
 
 class ProfileViewController: UIViewController {
 
@@ -191,7 +192,9 @@ extension ProfileViewController: UICollectionViewDataSource {
             //contacts[indexPath.row].username
             
             let imageURL = contacts[indexPath.row].imageURL
-            headerViewCell.profileImageView.loadImage(from: imageURL)
+            
+            headerViewCell.profileImageView.sd_setImage(with: URL(string: imageURL), placeholderImage: nil, options: .progressiveDownload, completed: nil)
+                //.loadImage(from: imageURL)
             
             
             
