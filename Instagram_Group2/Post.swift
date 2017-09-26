@@ -30,10 +30,11 @@ class Post {
     var likes: [String:Any]?
     var isLiked: Bool?
     var username : String?
+    var comment : String?
     
     init() {}
     
-    init(aCaption : String, aImageURL : String, aImageFilename : String, anId : String, aLikeCount : Int, aLikes : [String:Any]?, anIsLiked : Bool, anUsername : String) {
+    init(aCaption : String, aImageURL : String, aImageFilename : String, anId : String, aLikeCount : Int, aLikes : [String:Any]?, anIsLiked : Bool, anUsername : String, aComment : String) {
         
         caption = aCaption
         imageURL = aImageURL
@@ -47,6 +48,7 @@ class Post {
         
         isLiked = anIsLiked
         username = anUsername
+        comment = aComment
         
     }
 }
@@ -63,9 +65,10 @@ extension Post {
         let postID = postDictionary["uid"] as? String,
             let postLikeCount = postDictionary["likesCount"] as? Int,
         let postIsLiked = postDictionary["isLiked"] as? Bool,
-        let username = postDictionary["username"] as? String {
+        let username = postDictionary["username"] as? String,
+        let comment = postDictionary["comment"] as? String{
             
-            let tempPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: postID, aLikeCount: postLikeCount, aLikes: nil, anIsLiked: postIsLiked, anUsername: username)
+            let tempPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: postID, aLikeCount: postLikeCount, aLikes: nil, anIsLiked: postIsLiked, anUsername: username, aComment: comment)
             
             if let likes = postDictionary["likes"] as? [String:Any] {
                 post.likes = likes
@@ -75,7 +78,7 @@ extension Post {
             
             
         }
-        
+  
 //        if let currentUserID = Auth.auth().currentUser?.uid {
 //            if post.likes != nil {
 //                post.isLiked = post.likes[currentUserID] != nil

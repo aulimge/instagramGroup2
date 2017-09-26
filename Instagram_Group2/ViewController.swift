@@ -148,10 +148,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
               
         fetchPost()
-        
-        
+      
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentSegue" {
+            let commentVC = segue.destination as! CommentViewController
+            commentVC.postID = sender as! String
+        }
+    }
     
 }
 

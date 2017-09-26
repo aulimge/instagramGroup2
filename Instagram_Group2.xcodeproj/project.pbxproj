@@ -14,6 +14,9 @@
 		37C95A52CB71A307B77A8FFE /* Pods_Instagram_Group2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F16610B9051CDB223C6A3958 /* Pods_Instagram_Group2.framework */; };
 		C017A8E51F668AAB00EBF81F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017A8E41F668AAB00EBF81F /* LoginViewController.swift */; };
 		C017A8E71F668AD100EBF81F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C017A8E61F668AD100EBF81F /* SignUpViewController.swift */; };
+		C0270AE81F787FAA00652117 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0270AE71F787FA900652117 /* CommentViewController.swift */; };
+		C0270AEA1F787FB600652117 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0270AE91F787FB600652117 /* CommentTableViewCell.swift */; };
+		C0270AEE1F78A49700652117 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0270AED1F78A49700652117 /* Comment.swift */; };
 		C06677631F67E5BF002672FD /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06677621F67E5BF002672FD /* UploadPhotoViewController.swift */; };
 		C06677651F67ECB0002672FD /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06677641F67ECB0002672FD /* HomeTableViewCell.swift */; };
 		C0C588841F6A0BF8006C9EE3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C588831F6A0BF8006C9EE3 /* EditProfileViewController.swift */; };
@@ -38,6 +41,9 @@
 		5F17D59AA9076B456348C1A2 /* Pods-Instagram_Group2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram_Group2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram_Group2/Pods-Instagram_Group2.release.xcconfig"; sourceTree = "<group>"; };
 		C017A8E41F668AAB00EBF81F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C017A8E61F668AD100EBF81F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C0270AE71F787FA900652117 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		C0270AE91F787FB600652117 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		C0270AED1F78A49700652117 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		C06677621F67E5BF002672FD /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		C06677641F67ECB0002672FD /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		C0C588831F6A0BF8006C9EE3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -114,12 +120,14 @@
 				F81D11DC1F6781BA007FEDBD /* Instagram_Group2.entitlements */,
 				F81D11C81F667E52007FEDBD /* AppDelegate.swift */,
 				F81D11CA1F667E52007FEDBD /* ViewController.swift */,
-				C0C588831F6A0BF8006C9EE3 /* EditProfileViewController.swift */,
 				F81D11CC1F667E52007FEDBD /* Main.storyboard */,
 				C06677621F67E5BF002672FD /* UploadPhotoViewController.swift */,
+				1712F7CE1F67976E00FE0C01 /* ProfileViewController.swift */,
+				C0C588831F6A0BF8006C9EE3 /* EditProfileViewController.swift */,
 				1712F7F41F67DD3200FE0C01 /* PictureCollectionViewCell.swift */,
 				1712F7F21F67DCF900FE0C01 /* ProfileCollectionViewCell.swift */,
-				1712F7CE1F67976E00FE0C01 /* ProfileViewController.swift */,
+				C0270AE71F787FA900652117 /* CommentViewController.swift */,
+				C0270AE91F787FB600652117 /* CommentTableViewCell.swift */,
 				F81D11CF1F667E52007FEDBD /* Assets.xcassets */,
 				C06677641F67ECB0002672FD /* HomeTableViewCell.swift */,
 				F81D11D11F667E52007FEDBD /* LaunchScreen.storyboard */,
@@ -134,6 +142,7 @@
 			children = (
 				F81D12021F6821D8007FEDBD /* Post.swift */,
 				F81D120D1F68CF29007FEDBD /* Contact.swift */,
+				C0270AED1F78A49700652117 /* Comment.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -322,8 +331,11 @@
 				F81D120E1F68CF29007FEDBD /* Contact.swift in Sources */,
 				1712F7F31F67DCF900FE0C01 /* ProfileCollectionViewCell.swift in Sources */,
 				F81D12031F6821D8007FEDBD /* Post.swift in Sources */,
+				C0270AEA1F787FB600652117 /* CommentTableViewCell.swift in Sources */,
+				C0270AEE1F78A49700652117 /* Comment.swift in Sources */,
 				C06677631F67E5BF002672FD /* UploadPhotoViewController.swift in Sources */,
 				C06677651F67ECB0002672FD /* HomeTableViewCell.swift in Sources */,
+				C0270AE81F787FAA00652117 /* CommentViewController.swift in Sources */,
 				C0C588841F6A0BF8006C9EE3 /* EditProfileViewController.swift in Sources */,
 				1712F7C91F678DEB00FE0C01 /* searchViewController.swift in Sources */,
 				F81D11CB1F667E52007FEDBD /* ViewController.swift in Sources */,
