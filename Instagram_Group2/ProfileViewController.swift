@@ -138,11 +138,12 @@ class ProfileViewController: UIViewController {
                 let id = info["id"] as? String,
                 let likeCount = info["likeCount"] as? Int,
                 let isLiked = info["isLiked"] as? Bool,
-                let p_username = info["username"] as? String
+                let p_username = info["username"] as? String,
+                let comment = info["comment"] as? String
                 
             {
                 
-                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFileName, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: p_username)
+                let newPost = Post (aCaption: caption, aImageURL: imageURL, aImageFilename: imageFileName, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: p_username, aComment: comment)
                 print(newPost)
                 
                 

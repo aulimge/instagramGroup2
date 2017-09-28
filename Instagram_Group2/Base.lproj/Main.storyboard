@@ -598,9 +598,6 @@
                                                         <constraint firstAttribute="height" constant="25" id="tPs-Zz-opc"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-speech_bubble" translatesAutoresizingMaskIntoConstraints="NO" id="pZm-Od-v6x">
-                                                    <rect key="frame" x="53" y="381" width="25" height="25"/>
-                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Va-FK-QuR">
                                                     <rect key="frame" x="8" y="421" width="367" height="1"/>
                                                     <color key="backgroundColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -621,21 +618,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LB-rX-sY7">
+                                                    <rect key="frame" x="54" y="377" width="31" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button" backgroundImage="icons8-speech_bubble"/>
+                                                    <connections>
+                                                        <segue destination="lVR-DB-yT5" kind="show" identifier="CommentSegue" id="xE8-wd-qyG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yy6-Jl-8q0" firstAttribute="top" secondItem="Ly5-Q2-xq2" secondAttribute="bottom" constant="15" id="98a-gB-wRr"/>
-                                                <constraint firstItem="pZm-Od-v6x" firstAttribute="centerY" secondItem="yy6-Jl-8q0" secondAttribute="centerY" id="Bde-d1-dFV"/>
                                                 <constraint firstItem="Nnt-Qn-WZz" firstAttribute="top" secondItem="tah-Kr-9ew" secondAttribute="bottom" constant="8" id="Dmo-1m-jEg"/>
                                                 <constraint firstItem="Nnt-Qn-WZz" firstAttribute="leading" secondItem="Jna-BG-id1" secondAttribute="leading" constant="8" id="EQU-uG-sJC"/>
                                                 <constraint firstItem="tah-Kr-9ew" firstAttribute="top" secondItem="9Va-FK-QuR" secondAttribute="bottom" constant="15" id="HqZ-Rx-Sep"/>
                                                 <constraint firstItem="bR3-Nz-YaP" firstAttribute="top" secondItem="Jna-BG-id1" secondAttribute="top" constant="8" id="QXP-ty-a5N"/>
-                                                <constraint firstItem="pZm-Od-v6x" firstAttribute="leading" secondItem="yy6-Jl-8q0" secondAttribute="trailing" constant="20" id="Qlp-Ad-WSR"/>
                                                 <constraint firstItem="9Va-FK-QuR" firstAttribute="leading" secondItem="Jna-BG-id1" secondAttribute="leading" constant="8" id="S3S-MJ-h69"/>
                                                 <constraint firstItem="f8z-wK-KT4" firstAttribute="centerY" secondItem="bR3-Nz-YaP" secondAttribute="centerY" id="UU8-Yy-1X2"/>
                                                 <constraint firstItem="yy6-Jl-8q0" firstAttribute="leading" secondItem="Jna-BG-id1" secondAttribute="leading" constant="8" id="ZVv-ih-Qjn"/>
                                                 <constraint firstItem="Ly5-Q2-xq2" firstAttribute="top" secondItem="bR3-Nz-YaP" secondAttribute="bottom" constant="8" id="aus-TJ-MhK"/>
-                                                <constraint firstItem="pZm-Od-v6x" firstAttribute="height" secondItem="yy6-Jl-8q0" secondAttribute="height" id="bDs-Rh-zrf"/>
-                                                <constraint firstItem="pZm-Od-v6x" firstAttribute="width" secondItem="yy6-Jl-8q0" secondAttribute="width" id="dAA-JG-G7b"/>
                                                 <constraint firstItem="bR3-Nz-YaP" firstAttribute="leading" secondItem="Jna-BG-id1" secondAttribute="leading" constant="8" id="gcG-7Q-y45"/>
                                                 <constraint firstItem="f8z-wK-KT4" firstAttribute="leading" secondItem="bR3-Nz-YaP" secondAttribute="trailing" constant="8" id="juz-ne-bat"/>
                                                 <constraint firstAttribute="trailing" secondItem="9Va-FK-QuR" secondAttribute="trailing" id="mTi-NP-YAw"/>
@@ -648,7 +649,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="Nnt-Qn-WZz" id="Rty-dO-ycC"/>
-                                            <outlet property="commentImageView" destination="pZm-Od-v6x" id="Moh-NX-7ZJ"/>
+                                            <outlet property="commentButtonTapped" destination="0LB-rX-sY7" id="DoB-Kf-Lby"/>
                                             <outlet property="likeCountButton" destination="tah-Kr-9ew" id="nIF-fq-En6"/>
                                             <outlet property="likeImageView" destination="yy6-Jl-8q0" id="UzB-uf-Lqu"/>
                                             <outlet property="nameLabel" destination="f8z-wK-KT4" id="f8w-Yp-5HC"/>
@@ -682,14 +683,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ZCW-va-nXk" id="tBv-yH-xxy"/>
-                        <segue destination="lVR-DB-yT5" kind="show" identifier="CommentSegue" id="8n7-9f-6Dx">
-                            <nil key="action"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTq-rW-tZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4495" y="136"/>
+            <point key="canvasLocation" x="4493.6000000000004" y="135.38230884557723"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="mqA-nI-PMa">

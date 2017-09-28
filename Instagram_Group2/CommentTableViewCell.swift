@@ -1,9 +1,9 @@
 //
 //  CommentTableViewCell.swift
-//  Blocstagram
+//  Instagram
 //
-//  Created by ddenis on 1/20/17.
-//  Copyright © 2017 ddApps. All rights reserved.
+//  Created by Wei Liang on 1/20/17.
+//  Copyright © 2017 Wei Liang. All rights reserved.
 //
 
 import UIKit
@@ -21,7 +21,7 @@ class CommentTableViewCell: UITableViewCell {
         }
     }
     
-    var user: User? {
+    var user: Contact? {
         didSet {
             updateUserInfo()
         }
@@ -39,11 +39,12 @@ class CommentTableViewCell: UITableViewCell {
     
     func updateView() {
         commentLabel.text = comment?.commentText
+        
     }
     
     func updateUserInfo() {
         nameLabel.text = user?.username
-        if let photoURL = user?.profileImageURL {
+        if let photoURL = user?.imageURL {
             profileImageView.sd_setImage(with: URL(string: photoURL), placeholderImage: UIImage(named: "profile"))
         }
     }

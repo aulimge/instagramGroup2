@@ -10,6 +10,19 @@ import Foundation
 class Comment {
     var commentText: String?
     var uid: String?
+    var username : String?
+   
+    
+    init(text: String, aUid: String, name: String) {
+        commentText = text
+        uid = aUid
+        username = name
+    }
+    
+    init() {
+        
+    }
+    
 }
 
 extension Comment {
@@ -19,6 +32,7 @@ extension Comment {
         
         comment.commentText = postDictionary["commentText"] as? String
         comment.uid = postDictionary["uid"] as? String
+        comment.username = postDictionary["username"] as? String
         
         return comment
     }

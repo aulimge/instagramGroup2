@@ -63,7 +63,7 @@ extension Post {
         let imageURL = postDictionary["imageURL"] as? String,
         let imageFilename = postDictionary["imageFilename"] as? String,
         let postID = postDictionary["uid"] as? String,
-            let postLikeCount = postDictionary["likesCount"] as? Int,
+        let postLikeCount = postDictionary["likesCount"] as? Int,
         let postIsLiked = postDictionary["isLiked"] as? Bool,
         let username = postDictionary["username"] as? String,
         let comment = postDictionary["comment"] as? String{

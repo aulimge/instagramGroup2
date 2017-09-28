@@ -63,13 +63,14 @@ class ViewController: UIViewController {
                 let likeCount = info["likeCount"] as? Int,
                 let likes = info["likes"] as? String,
             let isLiked = info["isLiked"] as? Bool,
-            let username = info["username"] as? String {
+            let username = info["username"] as? String,
+            let comment = info["comment"] as? String{
                 
-                
+               
                 
                 
                 //create new contact object
-                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: username)
+                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: username, aComment:comment )
                 print(newPost)
                 
                 //append to contact array
@@ -150,10 +151,11 @@ class ViewController: UIViewController {
         fetchPost()
       
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CommentSegue" {
-            let commentVC = segue.destination as! CommentViewController
-            commentVC.postID = sender as! String
+            var commentVC = segue.destination as? CommentViewController
+            commentVC?.postID = sender as? String
         }
     }
     
@@ -182,7 +184,7 @@ extension ViewController : UITableViewDataSource{
             cell.postImageView.image = #imageLiteral(resourceName: "Instagram icon")
         }
         
-        
+//        cell.commentButtonTapped.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
         
         
        // let imageURL2 = posts[indexPath.row].
@@ -196,7 +198,7 @@ extension ViewController : UITableViewDataSource{
             cell.likeImageView.image = (#imageLiteral(resourceName: "likeIcon_filled"))
 
         } else {
-            cell.likeImageView.image = (#imageLiteral(resourceName: "icons8-like"))
+            cell.likeImageView.image = (#imageLiteral(resourceName: "icons8-hearts.png"))
         }
             
         

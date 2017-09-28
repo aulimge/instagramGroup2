@@ -11,22 +11,25 @@ import Firebase
 
 
 
-class CommentViewController: UIViewController {
 
+class CommentViewController: UIViewController {
+    
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var constraintToBottom: NSLayoutConstraint!
     
+    //the id of the user which want to comment
     var postID: String!
+    //the contents of the comment
     var comments = [Comment]()
     var users = [Contact]()
     var ref: DatabaseReference!
     var posts : [Post] = []
     
     // MARK: - View Lifecycle
-    
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Comments"
@@ -37,7 +40,7 @@ class CommentViewController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.dataSource = self
-
+        
         handleTextField()
         prepareForNewComment()
         loadComments()
@@ -57,7 +60,7 @@ class CommentViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-
+    
     
     // MARK: - Keyboard Notification Response Methods
     
@@ -84,86 +87,50 @@ class CommentViewController: UIViewController {
     // MARK: - Firebase Save Operation
     
     @IBAction func send(_ sender: Any) {
-        let commentsReference = Comment()
-        let newCommentID = commentsReference.childByAutoId().key
+        let comments : [String:Any] = ["name" : "", "text": "" ,"userID": "randomUserID1"]
         
-        let newCommentsReference = commentsReference.child(newCommentID)
-        guard let currentUser = API.User.CURRENT_USER else { return }
-        let currentUserID = currentUser.uid
+        let randomID = String(Int(Date().timeIntervalSince1970))
         
-        newCommentsReference.setValue(["uid": currentUserID, "commentText": commentTextField.text!]) { (error, reference) in
-            if error != nil {
-                ProgressHUD.showError("Photo Save Error: \(error?.localizedDescription)")
-                return
-            }
-            
-            let postCommentRef = API.PostComment.REF_POST_COMMENTS.child(self.postID).child(newCommentID)
-            postCommentRef.setValue("true", withCompletionBlock: { (error, dbRef) in
-                if error != nil {
-                    ProgressHUD.showError(error?.localizedDescription)
-                    return
-                }
-            })
-            
-            self.prepareForNewComment()
-            self.view.endEditing(true)
-        }
+        
+        ref.child("Comments").child(randomID).setValue(comments)
     }
-    
-    
-    // MARK: - Load Comments from Firebase
-    
+
+
+
+// MARK: - Load Comments from Firebase
+
     func loadComments() {
+        
         ref = Database.database().reference()
         
         //observe child added works as a loop return each child individually
-        ref.child("Posts").observe(.childAdded, with: { (snapshot) in
+        ref.child("Comments").child("postID").observe(.childAdded, with: { (snapshot) in
             guard let info = snapshot.value as? [String : Any]
                 else { return }
             print("info: \(info)")
             print(snapshot)
             print(snapshot.key)
             
-            //cast snapshot.value to correct Datatype
+            let newcomment = Comment.transformComment(postDictionary: info)
             
-            if let caption = info["caption"] as? String,
-                let imageURL = info["imageURL"] as? String,
-                let imageFilename = info["imageFilename"] as? String,
-                let id = info["id"] as? String,
-                let likeCount = info["likeCount"] as? Int,
-                let likes = info["likes"] as? String,
-            let isLiked = info["isLiked"] as? Bool,
-            let username = info["username"] as? String,
-            let comment = info["comment"] as? String{
-                
-                
-                
-                
-                //create new contact object
-                let newPost = Post(aCaption: caption, aImageURL: imageURL, aImageFilename: imageFilename, anId: id, aLikeCount: likeCount, aLikes: nil, anIsLiked: isLiked, anUsername: username, aComment : comment)
-                print(newPost)
-                
-                //append to contact array
-                self.posts.append(newPost)
-                
-                
-                //this is more efficient
-                //insert indv rows as we retrive idv items
-                let  index = self.posts.count - 1
+            
+            
+            let comment = Comment()
+            
+            //append to contact array
+            
+            
+            //this is more efficient
+            //insert indv rows as we retrive idv items
+            DispatchQueue.main.async {
+                self.comments.append(newcomment)
+                let  index = self.comments.count - 1
                 let indexPath = IndexPath(row: index, section: 0)
                 self.tableView.insertRows(at: [indexPath], with: .right)
             }
-            
         })
         
-        ref.child("Posts").observe(.value, with: { (snapshot) in
-            guard let info = snapshot.value as? [String : Any]
-                else { return }
-            
-            print (info)
-        })
-        
-        ref.child("Posts").observe(.childRemoved, with: { (snapshot) in
+        ref.child("Comments").observe(.childRemoved, with: { (snapshot) in
             guard let info = snapshot.value as? [String : Any ] else { return }
             print(info)
             
@@ -171,8 +138,8 @@ class CommentViewController: UIViewController {
             
             
             //filters through post returns index(deletedIndex) where Boolean condition is fulfilled
-            if let deletedIndex = self.posts.index(where: { (student) -> Bool in
-                return student.id == deletedID
+            if let deletedIndex = self.comments.index(where: { (user) -> Bool in
+                return Comment.transformComment(postDictionary: info).uid == deletedID
             }) {
                 //remove post when deletedIndex is found
                 self.posts.remove(at: deletedIndex)
@@ -181,62 +148,25 @@ class CommentViewController: UIViewController {
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
         })
-        
-        ref.child("Posts").observe(.childChanged, with: { (snapshot) in
-            guard let info = snapshot.value as? [String:Any] else {return}
-            
-            guard let caption = info["caption"] as? String,
-                let imageURL = info["imageURL"] as? String,
-                let imageFilename = info["imageFilename"] as? String,
-                let id = info["id"] as? String,
-                let likeCount = info["likeCount"] as? Int,
-                let isLiked = info["isLiked"] as? Bool,
-                let username = info["username"] as? String else {return}
-            
-            if let matchedIndex = self.posts.index(where: { (post) -> Bool in
-                return post.id == snapshot.key
-            }) {
-                let changedPost = self.posts[matchedIndex]
-                changedPost.caption = caption
-                changedPost.imageURL = imageURL
-                changedPost.imageFilename = imageFilename
-                changedPost.id = id
-                changedPost.likeCount = likeCount
-                if let likes = info["likes"] as? [String:Any] {
-                    changedPost.likes = likes
-                }
-                changedPost.isLiked = isLiked
-                changedPost.username = username
-                
-                let indexPath = IndexPath(row: matchedIndex, section: 0)
-                self.tableView.reloadRows(at: [indexPath], with: .none)
-            }
-        })
     }
-    
-    
+
+
     // fetch all user info at once and cache it into the users array
-    
-    func fetchUser(uid: String, completed: @escaping () -> Void) {
-        postID.observeUser(withID: uid) { user in
-                self.users.append(user)
-                
-                completed()
-            }
-    }
-    
-    
+
+
+
+    //
     // MARK: - UI Methods
-    
+
     func prepareForNewComment() {
         commentTextField.text = ""
         disableButton()
     }
-    
+
     func handleTextField() {
         commentTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
-    
+
     func textFieldDidChange() {
         guard let comment = commentTextField.text, !comment.isEmpty else {
             // disable Send button if comment is blank and return
@@ -246,17 +176,17 @@ class CommentViewController: UIViewController {
         // otherwise enable the Send button
         enableButton()
     }
-    
+
     func enableButton() {
         sendButton.alpha = 1.0
         sendButton.isEnabled = true
     }
-    
+
     func disableButton() {
         sendButton.alpha = 0.2
         sendButton.isEnabled = false
     }
-    
+
 }
 
 
@@ -269,12 +199,15 @@ extension CommentViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         
         cell.comment = comments[indexPath.row]
-        cell.user = users[indexPath.row]
+       // cell.user = users[indexPath.row]
         
         return cell
     }
     
 }
+
+

@@ -14,5 +14,6 @@ target 'Instagram_Group2' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   pod 'SDWebImage'
+  
 
 end

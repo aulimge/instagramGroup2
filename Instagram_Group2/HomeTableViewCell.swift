@@ -14,12 +14,12 @@ import FirebaseAuth
 class HomeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
-     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var likeImageView: UIImageView!
-    @IBOutlet weak var commentImageView: UIImageView!
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var commentButtonTapped: UIButton!
     
     
     override func awakeFromNib() {
