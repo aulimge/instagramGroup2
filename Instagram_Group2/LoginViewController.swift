@@ -68,10 +68,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         showEmailAddress()
 
-        
-        
-        
-        
     }
     
     func dismissKeyboard() {
@@ -180,14 +176,45 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             if let validUser = user {
                print(validUser)
+                
+                let ref = Database.database().reference()
+                
+                ref.child("Users").child(validUser.uid).observe(.value, with: { (snapshot) in
+                    guard let info = snapshot.value as? [String : Any]
+                        else { return }
+                    print("info: \(info)")
+                    print(snapshot)
+                    print(snapshot.key)
+                    
+                    if let fullname = info["fullname"] as? String,
+                        let imageURL = info["imageURL"] as? String,
+                        let imageFilename = info["imageFilename"] as? String,
+                        let id = info["id"] as? String,
+                        let likeCount = info["likeCount"] as? Int,
+                        let lastname = info["lastname"] as? String,
+                        let firstname = info["firstname"] as? String,
+                        let username = info["username"] as? String,
+                        let comment = info["comment"] as? String{
+         
+                    
+                     Contact.currentUser = Contact(anID: id, aUsername: username, aFullname: fullname, anEmail: email, anImageURL: imageURL, anFilename: imageFilename, aFirstname: firstname, aLastname: lastname)
+                }
+                
+            
+        
+                
+                
+                
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else { return }
                 
                 
                 self.present(vc, animated:  true, completion:  nil)
                 
-            }
+            })
             
+            }
         }
+    
         
     }
     

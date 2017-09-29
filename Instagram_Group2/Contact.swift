@@ -19,6 +19,8 @@ class Contact {
     var firstname : String = ""
     var lastname : String = ""
     
+    static var currentUser : Contact?
+    
     init(anID : String, aUsername : String, aFullname : String, anEmail : String, anImageURL : String, anFilename : String, aFirstname : String, aLastname : String  ) {
         id = anID
         username = aUsername

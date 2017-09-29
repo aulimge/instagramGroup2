@@ -24,7 +24,7 @@ class CommentViewController: UIViewController {
     var postID: String!
     //the contents of the comment
     var comments = [Comment]()
-    var users = [Contact]()
+    var users : [Contact] = []
     var ref: DatabaseReference!
     var posts : [Post] = []
     
@@ -87,7 +87,13 @@ class CommentViewController: UIViewController {
     // MARK: - Firebase Save Operation
     
     @IBAction func send(_ sender: Any) {
-        let comments : [String:Any] = ["name" : "", "text": "" ,"userID": "randomUserID1"]
+        guard let id = Auth.auth().currentUser?.uid,
+              let name = Contact.currentUser?.username,
+              let text = commentTextField.text
+            
+            else { return }
+        
+        let comments : [String:Any] = ["name" : name, "text": text ,"userID": id]
         
         let randomID = String(Int(Date().timeIntervalSince1970))
         

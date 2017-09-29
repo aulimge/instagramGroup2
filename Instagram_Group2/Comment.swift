@@ -30,9 +30,9 @@ extension Comment {
     static func transformComment(postDictionary: [String: Any]) -> Comment  {
         let comment = Comment()
         
-        comment.commentText = postDictionary["commentText"] as? String
-        comment.uid = postDictionary["uid"] as? String
-        comment.username = postDictionary["username"] as? String
+        comment.commentText = postDictionary["text"] as? String
+        comment.uid = postDictionary["userID"] as? String
+        comment.username = postDictionary["name"] as? String
         
         return comment
     }
